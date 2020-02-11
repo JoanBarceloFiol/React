@@ -1,0 +1,168 @@
+@import "../css/google-fonts/fonts.css";
+*{font-family: 'Ubuntu', sans-serif;}
+
+:root {
+    --primary: #1f34a0;
+    --dark: #1b2456;
+    --old-primary: #5378ff;
+}
+.bg-custom-secondary {
+    background-color: var(--primary);
+}
+
+.text-custom-secondary {
+    color: var(--primary);
+}
+
+.bg-custom-dark {
+    background-color: var(--dark);
+}
+
+.text-custom-dark {
+    color: var(--dark);
+}
+
+.text-old-primary {
+	color: var(--old-primary)!important;
+}
+
+.bg-old-primary {
+	background-color: var(--old-primary)!important;
+}
+
+.bg-secondary {
+    background-color: #3b4a9a!important;
+}
+.text-secondary {
+    color: #3b4a9a!important;
+}
+.bg-dark{
+    background-color: #1b2456!important;
+}
+.text-dark {
+    color: #1b2456!important;
+}
+.bg-light {
+    background-color: #f1f1f3!important;
+}
+.text-light {
+    color: #f1f1f3!important;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+main {
+	margin-bottom: 237px;
+}
+.m-main {
+		margin-bottom: 190px  !important;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+/* Video */
+.videobackground {
+  position: relative;
+  background-color: black;
+  height: 82.6vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.videobackground video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.videobackground .container {
+  position: relative;
+  z-index: 2;
+}
+
+.videobackground .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+  .videobackground {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  .videobackground video {
+    display: none;
+  }
+}
+/* Pagament */
+.nav-pills .nav-link {
+  color: #555;
+}
+
+.nav-pills .nav-link.active {
+  color: #fff;
+}
+/* -------- */
+/* Sticky nav */
+.sticky {
+    z-index: 50 !important;
+}
+.sticky-nav {
+    z-index: 30 !important;
+}
+/* -------- */
+::selection {
+  background: #c0c0c0;
+}
+/* -------- */
+.storyborder {
+	border: solid;
+	border-color: #6487ff;
+	border-width: 3px;
+}
+.storyborder-seen {
+	border: solid;
+	border-color: #9592b1;
+	border-width: 3px;
+}
+.nostoryborder {
+	border: solid;
+	border-color: #f2f3f3;
+	border-width: 3px;
+}
+.userstory {
+	display: inline-block;
+	width: 80px;
+}
+.userstory img {
+	margin-left: 20px;
+}
+
+.storyrow {
+	height: 84px;
+	white-space: nowrap;
+}
+/*----------*/
