@@ -54,6 +54,7 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 main {
 	margin-bottom: 237px;
 }
@@ -65,6 +66,11 @@ main {
   bottom: 0;
   width: 100%;
 }
+
+#footer-top {
+	height: 134.28px
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
