@@ -2,9 +2,9 @@ import React  from 'react';
 import { 
 	Container, 
 	Row, 
-	Col, 
-	Button,
+	Col
 	} from 'reactstrap';
+import Translate from "../lang/Translate";
 
 class Footer extends React.Component {
 
@@ -14,18 +14,18 @@ class Footer extends React.Component {
 		    	<Row className="bg-secondary" id="footer-top">
 		          	<Col className="px-5 text-center my-auto">
 		              	<li className="list-inline-item">
-		                    <p className="text-light h5">Registra't gratuitament</p>
+		                    <p className="text-light h5"><Translate string={'registerFree'}/></p>
 		                </li>
 		                <li className="list-inline-item">
 		                    <a href="#" className="btn btn-outline-light rounded">
-		                    Registrar-se!
+		                    <Translate string={'signUp'}/>
 		                    </a>
 		            	</li>
 		          	</Col>
 		        </Row>
 		        <Row className="text-center bg-dark p-2">
 		            <Col className="col text-center bg-dark p-2">
-		            	<a href="#" className="text-secondary">&copy; 2020 Copyright - GOATrails.com</a>
+		            	<a href="#" className="text-secondary">&copy; {(new Date().getFullYear())} Copyright - GOATrails.com</a>
 		            </Col>
 		    	</Row>
 	        </Container>

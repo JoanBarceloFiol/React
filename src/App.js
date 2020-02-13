@@ -1,48 +1,35 @@
-import React from 'react';
-import './App.css';
-import Footer from './components/Footer.js';
-import Menu from './components/Menu.js';
-import { 
-	Container, 
-	Row, 
-	Col, 
-	Dropdown, 
-	DropdownToggle, 
-	DropdownMenu, 
-	DropdownItem, 
-	UncontrolledDropdown, 
-	Button,
-	Collapse,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink,
-	NavbarText
-	} from 'reactstrap';
+import React, { Component } from "react";
+import { LocaleContext } from "./lang/LocaleContext.js";
+import Menu from "./components/Menu.js";
+import Footer from "./components/Footer.js";
 
-	
-class App extends React.Component {
+class App extends Component {
+  
+  constructor(props) {
+     super(props);
 
-	constructor(props) {
-	  super(props);
-	  }
-        
-	render() {
-	    return (
-	    	<div id="page">
-	    	
-	    	<Menu></Menu>
-	        
-	        <main role="main" className="container-fluid"></main>
-	        
-	        
-	        <Footer></Footer>
-      
-	    	 </div>
-	    );
-	}
+     // Idioma per defecte 
+     this.state = {
+       preferredLocale: "es"
+     };
+  }
+
+  // Canvia l'idioma de visualització
+  changeLanguage = ({ currentTarget: { id } }) => {
+     this.setState({
+       preferredLocale: id
+     });
+  };
+   
+  // Renderitza la App amb el context associat (idioma seleccionat).
+  render() {
+     return (
+       <LocaleContext.Provider value={this.state.preferredLocale}>
+         <Menu changeLanguage={this.changeLanguage} />
+         <Footer /> 
+       </LocaleContext.Provider>
+     );
+   }
 }
 
 export default App;
