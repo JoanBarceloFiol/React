@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { LocaleContext } from "./lang/LocaleContext.js";
-import {Route, BrowserRouter} from "react-router-dom";
+import {Route, BrowserRouter, Switch} from "react-router-dom";
 import Menu from "./components/Menu.js";
 import Footer from "./components/Footer.js";
 import Home from "./components/Home";
@@ -34,10 +34,12 @@ class App extends Component {
          <BrowserRouter>
              <Menu changeLanguage={this.changeLanguage} />
                <main className="container-fluid m-main">
-                   <Route path="/" exact component={Home} />
-                   <Route path="/routes" component={Routes} />
-                   <Route path="/courses" component={Courses} />
-                   <Route path="/social" component={Social} />
+                   <Switch>
+                       <Route path="/" exact component={Home} />
+                       <Route path="/routes" component={Routes} />
+                       <Route path="/courses" component={Courses} />
+                       <Route path="/social" component={Social} />
+                   </Switch>
                </main>
              <Footer />
          </BrowserRouter>

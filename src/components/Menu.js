@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import {
 	  Container, 
 	  Row, 
@@ -69,16 +70,16 @@ const Menu = (props) => {
 	        <Collapse isOpen={isOpen} navbar className="h5">
 	            <Nav className="ml-4 ml-md-auto" navbar>
 	                <NavItem className="mx-1">
-	                    <NavLink href="/"><i className="fas fa-home"></i> <Translate string={'home'}/></NavLink>
+						<NavLink><Link exact to='/'><i className="fas fa-home"/> <Translate string={'home'}/></Link></NavLink>
 	                </NavItem>
 	                <NavItem className="mx-1">
-	                    <NavLink href="/routes"><i className="fas fa-route"></i> <Translate string={'routes'}/></NavLink>
+	                    <NavLink><Link to='/routes'><i className="fas fa-route"/> <Translate string={'routes'}/></Link></NavLink>
 	                </NavItem>
 	                <NavItem className="mx-1">
-	                	<NavLink href="/courses"><i className="fas fa-chalkboard-teacher"></i> <Translate string={'courses'}/></NavLink>
+						<NavLink><Link to="/courses"><i className="fas fa-chalkboard-teacher"/> <Translate string={'courses'}/></Link></NavLink>
 	                </NavItem>
 	                <NavItem className="mx-1">
-	                	<NavLink href="/social"><i className="fas fa-users"></i> <Translate string={'social'}/></NavLink>
+						<NavLink><Link to="/social"><i className="fas fa-users"/> <Translate string={'social'}/></Link></NavLink>
 	                </NavItem>
 	            
 	            </Nav>
