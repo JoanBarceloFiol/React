@@ -70,16 +70,16 @@ const Menu = (props) => {
 	        <Collapse isOpen={isOpen} navbar className="h5">
 	            <Nav className="ml-4 ml-md-auto" navbar>
 	                <NavItem className="mx-1">
-						<NavLink><Link exact to='/'><i className="fas fa-home"/> <Translate string={'home'}/></Link></NavLink>
+						<Link exact to='/'><NavLink><i className="fas fa-home"/> <Translate string={'home'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-	                    <NavLink><Link to='/routes'><i className="fas fa-route"/> <Translate string={'routes'}/></Link></NavLink>
+						<Link to='/routes'><NavLink><i className="fas fa-route"/> <Translate string={'routes'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-						<NavLink><Link to="/courses"><i className="fas fa-chalkboard-teacher"/> <Translate string={'courses'}/></Link></NavLink>
+						<Link to="/courses"><NavLink><i className="fas fa-chalkboard-teacher"/> <Translate string={'courses'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-						<NavLink><Link to="/social"><i className="fas fa-users"/> <Translate string={'social'}/></Link></NavLink>
+						<Link to="/social"><NavLink><i className="fas fa-users"/> <Translate string={'social'}/></NavLink></Link>
 	                </NavItem>
 	            
 	            </Nav>
