@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import { LocaleContext } from "./lang/LocaleContext.js";
+import {Route, BrowserRouter} from "react-router-dom";
 import Menu from "./components/Menu.js";
 import Footer from "./components/Footer.js";
+import Home from "./components/Home";
+import Social from "./components/Social";
+import Courses from "./components/Courses";
+import Routes from "./components/Routes";
+
 
 class App extends Component {
   
@@ -25,8 +31,16 @@ class App extends Component {
   render() {
      return (
        <LocaleContext.Provider value={this.state.preferredLocale}>
-         <Menu changeLanguage={this.changeLanguage} />
-         <Footer /> 
+         <BrowserRouter>
+             <Menu changeLanguage={this.changeLanguage} />
+               <main className="container-fluid m-main">
+                   <Route path="/" exact component={Home} />
+                   <Route path="/routes" component={Routes} />
+                   <Route path="/courses" component={Courses} />
+                   <Route path="/social" component={Social} />
+               </main>
+             <Footer />
+         </BrowserRouter>
        </LocaleContext.Provider>
      );
    }
