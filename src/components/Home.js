@@ -7,7 +7,7 @@ class Home extends Component {
             <div>
                 <div className="row">
                     <div className="videobackground">
-                        <div className="overlay"></div>
+                        <div className="overlay"/>
                         <video playsinline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
                             <source src="http://www.goatrails.dawman.info/img/video.mp4" type="video/mp4"/>
                         </video>
