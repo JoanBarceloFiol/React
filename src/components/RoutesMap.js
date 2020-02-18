@@ -81,7 +81,6 @@ class RoutesMap extends Component {
 
     render() {
         const position = [this.props.lat, this.props.lng];
-        this.componentDidMount();
 
         return (
             <Map center={position} zoom={this.props.zoom}>

@@ -1,8 +1,34 @@
 import React, { Component } from "react";
 import RoutesMap from "./RoutesMap";
+import RouteElement from "./RouteElement";
+import axios from 'axios';
 
 class Routes extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            routes: []
+        }
+    }
+
+    componentDidMount() {
+        let data = axios.get('http://localhost:80/api/routes/basic');
+        data.then( res => {
+            const routes = res.data;
+            this.setState({routes});
+        });
+    }
+
+    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner){
+        console.log(desc);
+        return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>)
+    }
+
     render() {
+        console.log(this.state.routes);
+
         return (
             <div>
                 <div className="row">
@@ -34,7 +60,9 @@ class Routes extends Component {
 
                         <div className="row overflow-auto">
                             <div className="col pt-2">
-                                routes
+                                {this.state.routes.map(res => this.mountRoutes
+                                (res.id, res.titol, res.distancia, res.id_dificultat, res.duracio, res.maxim_persones,
+                                res.descripcio, res.owner))}
                             </div>
                         </div>
 
