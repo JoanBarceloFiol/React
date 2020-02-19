@@ -3,14 +3,13 @@ import React, { Component } from 'react';
 
 class RouteElement extends Component {
 
-
     constructor(props) {
         super(props);
     }
 
     render() {
-        let ownerLink = 'perfil/' + this.props.owner;
-        let routeLink = 'ruta/' + this.props.id;
+        let ownerLink = 'user/' + this.props.owner;
+        let routeLink = 'route/' + this.props.id;
         return (
             <div className="container-fluid">
                 <div className="row border-bottom mx-2 mx-lg-3 mb-4">

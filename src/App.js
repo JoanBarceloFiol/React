@@ -9,6 +9,7 @@ import Courses from "./components/Courses";
 import Routes from "./components/Routes";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import RoutePage from "./components/RoutePage";
 
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
                        <Route path="/social" component={Social} />
                        <Route path="/login" component={Login} />
                        <Route path="/register" component={Register} />
+                       <Route path="/route/:handle" component={RoutePage} />
                    </Switch>
                </main>
              <Footer />

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, GeoJSON} from 'react-leaflet';
 import axios from 'axios';
-import '../css/RoutesMap.css';
+import '../css/RouteMap.css';
 
 
-class RoutesMap extends Component {
+class RouteMap extends Component {
 
 
     constructor(props) {
@@ -48,4 +48,4 @@ class RoutesMap extends Component {
 
 }
 
-export default RoutesMap;
+export default RouteMap;
