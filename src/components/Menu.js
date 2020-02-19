@@ -33,7 +33,7 @@ const Menu = (props) => {
 		    <Row className="bg-custom-secondary pt-2">
 		        <Col className="d-flex justify-content-start">
 		        
-		        <LanguagePicker changeLanguage={props.changeLanguage} />
+		        <LanguagePicker changeLanguage={props.changeLanguage} preferredLocale={props.preferredLocale} />
 		            
 		        </Col>
 		    	<Col className="d-flex justify-content-end">

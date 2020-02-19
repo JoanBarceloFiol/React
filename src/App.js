@@ -32,7 +32,7 @@ class App extends Component {
      return (
        <LocaleContext.Provider value={this.state.preferredLocale}>
          <BrowserRouter>
-             <Menu changeLanguage={this.changeLanguage} />
+             <Menu changeLanguage={this.changeLanguage} preferredLocale={this.state.preferredLocale}/>
                <main className="container-fluid m-main">
                    <Switch>
                        <Route path="/" exact component={Home} />
