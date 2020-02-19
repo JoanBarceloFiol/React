@@ -68,7 +68,7 @@ class Routes extends Component {
 
                     </div>
 
-                    <div className="d-none d-md-block col-6 overflow-hidden p-0">
+                    <div className="d-none d-md-block col-6 overflow-hidden p-0" style={{height: '600px'}}>
                         <RoutesMap lat="39.571359" lng="2.970117" zoom="5" />
                     </div>
 

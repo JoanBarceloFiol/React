@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Map, TileLayer, GeoJSON} from 'react-leaflet';
 import axios from 'axios';
-import '../css/RoutesMap.css';
+import '../css/RouteMap.css';
 
 
 class RoutesMap extends Component {

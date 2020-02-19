@@ -47,8 +47,9 @@ class RoutePage extends Component {
                                     width="25px" /></a> <a className="text-old-primary" title={route.owner} href={ownLink}>{route.owner} </a>
                             </div>
 
-                            <RouteMap lat="39.571359" lng="2.970117" zoom="5" />
-
+                            <div style={{height: '400px'}}>
+                                <RouteMap lat="39.571359" lng="2.970117" zoom="5" />
+                            </div>
                             <hr/>
 
 
@@ -79,7 +80,7 @@ class RoutePage extends Component {
                                                         </div>
                                                     </div>
                                                     <div className="d-none d-xl-block col-6">
-                                                        <p><i className="fas fa-medal"></i> <a
+                                                        <p><i className="fas fa-medal"/> <a
                                                             className="text-old-primary"
                                                             href="#">{route.id_dificultat}</a></p>
                                                     </div>
@@ -148,9 +149,10 @@ class RoutePage extends Component {
                                                 Donec lacinia congue felis in faucibus.
                                                 <div className="row mb-2 mt-1">
                                                     <div className="col-7 text-secondary">
-                                                        <span>3d</span> <a href="#"
-                                                                           className="ml-3 text-secondary text-decoration-none"><span
-                                                        className="d-none d-sm-inline">reply</span><i className="far fa-paper-plane d-inline d-sm-none"/></a>
+                                                        <span>3d</span>
+                                                        <a href="#" className="ml-3 text-secondary text-decoration-none">
+                                                        <span className="d-none d-sm-inline">reply</span>
+                                                        <i className="far fa-paper-plane d-inline d-sm-none"/></a>
                                                     </div>
                                                     <div className="col text-secondary text-right">
                                                         142 <i className="far fa-heart"></i>
