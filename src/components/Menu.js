@@ -38,9 +38,9 @@ const Menu = (props) => {
 		        </Col>
 		    	<Col className="d-flex justify-content-end">
 				    <div className='d-none d-md-block'>
-				    	<Button size="sm" color="light" href='#' className='text-primary rounded'>
+				    	<Button size="sm" color="light" href='/login' className='text-primary rounded'>
 				    	<Translate string={'login'}/>	</Button>
-				    	<Button outline size="sm" color="light" href='#' className='ml-2 rounded'>
+				    	<Button outline size="sm" color="light" href='/register' className='ml-2 rounded'>
 				    	<Translate string={'register'}/>	</Button>
 				    </div>
 				                          
@@ -51,8 +51,8 @@ const Menu = (props) => {
 				            <i className='fas fa-user'></i>
 				            </DropdownToggle>
 				            <DropdownMenu right className="dropdown-menu-left">
-				              <DropdownItem tag="a" href="#" className="btn btn-link"><i className='fas fa-sign-in-alt' aria-hidden='true'></i> <Translate string={'login'}/></DropdownItem>
-				              <DropdownItem tag="a" href="#" className="btn btn-link"><i className='far fa-id-card' aria-hidden='true'></i> <Translate string={'register'}/></DropdownItem>
+				              <DropdownItem tag="a" href="/login" className="btn btn-link"><i className='fas fa-sign-in-alt' aria-hidden='true'></i> <Translate string={'login'}/></DropdownItem>
+				              <DropdownItem tag="a" href="/register" className="btn btn-link"><i className='far fa-id-card' aria-hidden='true'></i> <Translate string={'register'}/></DropdownItem>
 				            </DropdownMenu>
 			            </UncontrolledDropdown>
 				    		    

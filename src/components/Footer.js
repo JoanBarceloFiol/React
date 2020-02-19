@@ -17,7 +17,7 @@ class Footer extends React.Component {
 		                    <p className="text-light h5"><Translate string={'registerFree'}/></p>
 		                </li>
 		                <li className="list-inline-item">
-		                    <a href="#" className="btn btn-outline-light rounded">
+		                    <a href="/register" className="btn btn-outline-light rounded">
 		                    <Translate string={'signUp'}/>
 		                    </a>
 		            	</li>

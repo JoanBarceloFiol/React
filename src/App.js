@@ -7,6 +7,8 @@ import Home from "./components/Home";
 import Social from "./components/Social";
 import Courses from "./components/Courses";
 import Routes from "./components/Routes";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 
 class App extends Component {
@@ -39,6 +41,8 @@ class App extends Component {
                        <Route path="/routes" component={Routes} />
                        <Route path="/courses" component={Courses} />
                        <Route path="/social" component={Social} />
+                       <Route path="/login" component={Login} />
+                       <Route path="/register" component={Register} />
                    </Switch>
                </main>
              <Footer />
