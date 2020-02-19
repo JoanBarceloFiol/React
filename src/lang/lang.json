@@ -79,7 +79,9 @@
 		"distance": "Distancia",
 		"courses": "Cursos",
 		"myProfile": "El meu perfil",
-		"myCourses": "Els meus cursos"
+		"myCourses": "Els meus cursos",
+		"surnames": "Llinatges",
+		"mail": "Email"
 	},
 	"en": {
 		"user": "User",
@@ -161,7 +163,9 @@
 		"distance": "Distance",
 		"courses": "Courses",
 		"myProfile": "My profile",
-		"myCourses": "My courses"
+		"myCourses": "My courses",
+		"surnames": "Surnames",
+		"mail": "Email"
 	},
 	"es": {
 		"user": "Usuario",
@@ -243,7 +247,9 @@
 		"distance": "Distancia",
 		"courses": "Cursos",
 		"myProfile": "Mi perfil",
-		"myCourses": "Mis cursos"
+		"myCourses": "Mis cursos",
+		"surnames": "Apellidos",
+		"mail": "Email"
 	},
 	"fr": {
 		"user": "Utilisateur",
@@ -325,6 +331,8 @@
 		"distance": "Distance",
 		"courses": "Cours",
 		"myProfile": "Mon profil",
-		"myCourses": "My courses"
+		"myCourses": "My courses",
+		"surnames": "Surnoms",
+		"mail": "Email"
 	}
 }

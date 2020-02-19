@@ -24,12 +24,12 @@ class Register extends Component {
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label><i className="fas fa-key text-secondary"></i> Llinatges:</label>
+                                    <label><i className="fas fa-key text-secondary"></i> <Translate string={'surnames'}/>:</label>
                                     <input className="form-control" type="text" id="surname"/>
                                     <small id="incorrectPass2" className="form-text text-danger"></small>
                                 </div>
                                 <div className="form-group">
-                                    <label><i className="fas fa-key text-secondary"></i> Email:</label>
+                                    <label><i className="fas fa-key text-secondary"></i> <Translate string={'mail'}/>:</label>
                                     <input className="form-control" type="text" id="email"/>
                                     <small id="incorrectPass2" className="form-text text-danger"></small>
                                 </div>
