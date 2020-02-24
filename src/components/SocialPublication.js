@@ -39,7 +39,7 @@ class SocialPublication extends Component {
                                  aria-labelledby="posts-tab">
                                 <div className="form-group">
                                     <label className="sr-only" htmlFor="message"><Translate string={'share'}/></label>
-                                    <textarea className="form-control" id="message" rows="3" placeholder={<Translate string={'whatAreYouThinking'}/>}></textarea>
+                                    <textarea className="form-control" id="message" rows="3" placeholder={<Translate string={'whatAreYouThinking'}/>}/>
                                 </div>
                             </div>
                             <div className="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">

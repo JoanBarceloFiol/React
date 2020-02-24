@@ -11,7 +11,7 @@ class RouteMap extends Component {
         super(props);
 
         this.state = {
-            points: [],
+            route: [],
             state: false
         };
 
@@ -19,16 +19,16 @@ class RouteMap extends Component {
     }
 
     componentDidMount(){
-        let data = axios.get('http://localhost:80/api/first-points');
+        let data = axios.get(`http://localhost:80/api/route/${this.props.id}/path`);
         data.then( res => {
-            const points = res.data;
-            this.setState({points, state: true});
+            const route = res.data;
+            this.setState({route, state: true});
         });
     }
 
     getGeoJson() {
         if (this.state.state)
-            return ( <GeoJSON data={this.state.points} />);
+            return ( <GeoJSON data={this.state.route} />);
     }
 
 
