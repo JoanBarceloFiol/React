@@ -10,6 +10,7 @@ import Routes from "./components/Routes";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import RoutePage from "./components/RoutePage";
+import Perfil from "./components/Perfil";
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
                        <Route path="/login" component={Login} />
                        <Route path="/register" component={Register} />
                        <Route path="/route/:handle" component={RoutePage} />
+                       <Route path="/user/:handle" component={Perfil} />
                    </Switch>
                </main>
              <Footer />
