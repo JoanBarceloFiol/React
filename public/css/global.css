@@ -49,6 +49,18 @@
     color: #f1f1f3!important;
 }
 
+#perfilTabs li {
+    color: #1F34A0;
+}
+
+#perfilTabs li:hover {
+    color: #495057;
+}
+
+#perfilTabs .active {
+    color: #495057;
+}
+
 
 html {
   position: relative;

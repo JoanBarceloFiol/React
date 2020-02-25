@@ -68,18 +68,18 @@ const Menu = (props) => {
 	        </NavbarBrand>
 	        <NavbarToggler onClick={toggle} />
 	        <Collapse isOpen={isOpen} navbar className="h5">
-	            <Nav className="ml-4 ml-md-auto" navbar>
+	            <Nav id="menuTabs" className="ml-4 ml-md-auto" navbar>
 	                <NavItem className="mx-1">
-						<Link exact to='/'><NavLink><i className="fas fa-home"/> <Translate string={'home'}/></NavLink></Link>
+						<Link className="text-decoration-none" exact to='/'><NavLink><i className="fas fa-home"/> <Translate string={'home'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-						<Link to='/routes'><NavLink><i className="fas fa-route"/> <Translate string={'routes'}/></NavLink></Link>
+						<Link className="text-decoration-none" to='/routes'><NavLink><i className="fas fa-route"/> <Translate string={'routes'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-						<Link to="/courses"><NavLink><i className="fas fa-chalkboard-teacher"/> <Translate string={'courses'}/></NavLink></Link>
+						<Link className="text-decoration-none" to="/courses"><NavLink><i className="fas fa-chalkboard-teacher"/> <Translate string={'courses'}/></NavLink></Link>
 	                </NavItem>
 	                <NavItem className="mx-1">
-						<Link to="/social"><NavLink><i className="fas fa-users"/> <Translate string={'social'}/></NavLink></Link>
+						<Link className="text-decoration-none" to="/social"><NavLink><i className="fas fa-users"/> <Translate string={'social'}/></NavLink></Link>
 	                </NavItem>
 	            
 	            </Nav>

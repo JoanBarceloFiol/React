@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Translate from "../lang/Translate";
 import axios from "axios";
+import PerfilTabs from "./PerfilTabs";
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 
 class Perfil extends Component {
 
@@ -38,14 +40,14 @@ class Perfil extends Component {
                             <div class="col">
                                 <a href="#" class="d-inline-block mb-3 h3 text-decoration-none text-dark">{user.userName}</a>
                                 <a href="#" class="ml-3 px-4 btn btn-sm btn-light border mt-n2 d-none d-md-inline-block"><Translate string={'follow'}/></a>
-                                <div class="dropdown d-inline-block">
-                                    <button class="mt-n1 btn btn-link dropdown-toggle text-decoration-none text-secondary" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right " aria-labelledby="gedf-drop1">
-                                        <a class="dropdown-item" href="#"><i class="fas fa-exclamation-circle"></i> <Translate string={'report'}/></a>
-                                    </div>
-                                </div>
+                                <UncontrolledDropdown setActiveFromChild className="d-inline-block">
+                                    <DropdownToggle tag="a" className="btn btn-link text-secondary dropdown-toggle text-decoration-none" caret>
+                                        <i className='fa fa-ellipsis-h'></i>
+                                    </DropdownToggle>
+                                    <DropdownMenu right className="dropdown-menu-left">
+                                        <DropdownItem tag="a" href="#" className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
                                 <br class="d-inline-block d-md-none"/>
                                     <a href="#" class="px-4 btn btn-sm btn-light border mt-n2 d-inline-block d-md-none"><Translate string={'follow'}/></a>
                             </div>
@@ -78,6 +80,11 @@ class Perfil extends Component {
                                 <small class="text-secondary"><Translate string={'followedBy'}/> <a href="#" class="text-decoration-none font-weight-bold text-secondary">Toni</a>, <a href="#" class="text-decoration-none font-weight-bold text-secondary">Reina isabel</a> + 17 <Translate string={'more'}/></small>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className="row mx-0 mx-lg-5 mt-4 d-flex justify-content-center">
+                    <div className="col col-lg-10 col-xl-8 mb-3 px-0 mx-n2">
+                        <PerfilTabs/>
                     </div>
                 </div>
             </main>
