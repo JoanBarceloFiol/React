@@ -3,14 +3,14 @@ import { LocaleContext } from "./lang/LocaleContext.js";
 import {Route, BrowserRouter, Switch} from "react-router-dom";
 import Menu from "./components/Menu.js";
 import Footer from "./components/Footer.js";
-import Home from "./components/Home";
-import Social from "./components/Social";
-import Courses from "./components/Courses";
-import Routes from "./components/Routes";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import RoutePage from "./components/RoutePage";
-import Perfil from "./components/Perfil";
+import Home from "./components/Home/Home";
+import Social from "./components/Social/Social";
+import Courses from "./components/Courses/Courses";
+import Routes from "./components/Routes/Routes";
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import RoutePage from "./components/Route/RoutePage";
+import Perfil from "./components/Perfil/Perfil";
 
 
 class App extends Component {

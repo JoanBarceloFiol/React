@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Translate from "../lang/Translate";
-import '../css/register.css';
+import Translate from "../../lang/Translate";
+import '../../css/register.css';
 import md5 from "md5";
 import axios from "axios";
 
@@ -26,7 +26,7 @@ class Register extends Component {
         this.emailChange = this.emailChange.bind(this);
         this.secondPassChange = this.secondPassChange.bind(this);
         this.passChange = this.passChange.bind(this);
-        this.submitLogin = this.submitLogin.bind(this);
+        this.submitRegister = this.submitRegister.bind(this);
         this.validateEmail = this.validateEmail.bind(this);
     }
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Translate from "../lang/Translate";
+import Translate from "../../lang/Translate";
 import axios from "axios";
 import md5 from 'md5';
 

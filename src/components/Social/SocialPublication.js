@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Translate from "../lang/Translate";
-import Publicar from "./Publicar.js";
+import Translate from "../../lang/Translate";
+import Publicar from "../Publicar.js";
 
 class SocialPublication extends Component {
     constructor(props) {

@@ -19,7 +19,7 @@ import {
     DropdownItem
 } from 'reactstrap';
 import classnames from 'classnames';
-import Translate from "../lang/Translate";
+import Translate from "../../lang/Translate";
 
 const PerfilTabs = (props) => {
     const [activeTab, setActiveTab] = useState('1');
