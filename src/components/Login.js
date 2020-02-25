@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Translate from "../lang/Translate";
+import axios from "axios";
+import md5 from 'md5';
 
 class Login extends Component {
 
@@ -7,12 +9,12 @@ class Login extends Component {
         super(props);
 
         this.state = {
-            userName: '',
-            pass: ''
+            userName: null,
+            pass: null
         };
 
         this.userNameChange = this.userNameChange.bind(this);
-        this.passNameChange = this.passNameChange.bind(this);
+        this.passChange = this.passChange.bind(this);
         this.submitLogin = this.submitLogin.bind(this);
     }
 
@@ -20,12 +22,20 @@ class Login extends Component {
         this.setState({userName: event.target.value});
     }
 
-    passNameChange(event){
+    passChange(event){
         this.setState({pass: event.target.value});
     }
 
     submitLogin(){
-        console.log(this.state.userName);
+        if ( this.state.userName !== null && this.state.pass !== null) {
+            const querystring = require('querystring');
+            const userName = this.state.userName;
+            const password = md5(this.state.pass);
+            axios.post(`http://localhost:80/api/login`, querystring.stringify({ password, userName }))
+                .then(res => {
+                    localStorage.setItem('myData', res.data);;
+                })
+        }
     }
 
     render() {
@@ -35,7 +45,7 @@ class Login extends Component {
                     <div className="card shadow-sm mt-5">
                         <h5 className="card-header"><i className="fas fa-sign-in-alt"/> <Translate string={'login'}/></h5>
                         <div className="card-body">
-                            <form onSubmit={this.submitLogin}>
+                            <form onClick={this.submitLogin}>
                                 <div className="form-group">
                                     <label><i className="fas fa-user text-secondary"/> <Translate string={'user'}/>:</label>
                                     <input className="form-control" type="text" id="name" value={this.state.userName} onChange={this.userNameChange}/>
@@ -43,10 +53,10 @@ class Login extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label><i className="fas fa-key text-secondary"/> <Translate string={'password'}/>:</label>
-                                    <input className="form-control" type="password" id="pass" value={this.state.pass} onChange={this.passNameChange}/>
+                                    <input className="form-control" type="password" id="pass" value={this.state.pass} onChange={this.passChange}/>
                                     <small id="incorrectPass" className="form-text text-danger"/>
                                 </div>
-                                <button className="btn btn-primary btn-block rounded mt-4 disabled" type="submit" id="submit"><Translate string={'submit'}/>&nbsp;&nbsp;<i className="fas fa-angle-right"/></button>
+                                <button className="btn btn-primary btn-block rounded mt-4" type="button"><Translate string={'submit'}/>&nbsp;&nbsp;<i className="fas fa-angle-right"/></button>
                             </form>
                         </div>
                     </div>
