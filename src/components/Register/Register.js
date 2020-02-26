@@ -89,7 +89,8 @@ class Register extends Component {
     passCheck(pass1){
         let err = (pass1.length <  8) ? 'mes de 8 caracters' : '';
         this.setState({pass1Error: err});
-        return err !== '';    }
+        return err !== '';
+    }
 
     secondPassChange(event){
         this.setState({pass2: event.target.value});
