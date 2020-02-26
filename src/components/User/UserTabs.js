@@ -21,7 +21,7 @@ import {
 import classnames from 'classnames';
 import Translate from "../../lang/Translate";
 
-const PerfilTabs = (props) => {
+const UserTabs = (props) => {
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {
@@ -95,4 +95,4 @@ const PerfilTabs = (props) => {
     );
 }
 
-export default PerfilTabs;
+export default UserTabs;
