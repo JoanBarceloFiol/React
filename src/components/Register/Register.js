@@ -3,7 +3,6 @@ import Translate from "../../lang/Translate";
 import '../../css/register.css';
 import md5 from "md5";
 import axios from "axios";
-import {forEach} from "react-bootstrap/esm/ElementChildren";
 
 class Register extends Component {
 

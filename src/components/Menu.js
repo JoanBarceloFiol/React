@@ -28,16 +28,25 @@ class Menu extends Component {
 
 		this.state = {
 			isOpen: false,
-			isLogged: this.props.login
+			flag: false
 		};
 
 		this.toggle = this.toggle.bind(this);
+		this.closeSesion = this.closeSesion.bind(this);
 	}
 
 	toggle() {
 		this.setState({
 			isOpen: !this.state.isOpen
 		});
+	}
+
+	closeSesion(){
+		this.setState({flag:true})
+	}
+
+	isLogged(){
+		return (this.state.flag) ? false : this.props.login;
 	}
 
 	render() {
@@ -53,7 +62,7 @@ class Menu extends Component {
 						        </Col>
 						        
 						    	<Col className="d-flex justify-content-end">
-						    	 	{!this.props.login ? (<DropdownLogin/>) : (<DropdownProfile/>)}
+						    	 	{!this.isLogged() ? (<DropdownLogin/>) : (<DropdownProfile callback={this.closeSesion.bind(this)} />)}
 								</Col>
 							</Row>
 						</Container>
