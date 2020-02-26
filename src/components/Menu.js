@@ -28,7 +28,7 @@ class Menu extends Component {
 
 		this.state = {
 			isOpen: false,
-			isLogged: localStorage.getItem('myData')
+			isLogged: this.props.login
 		};
 
 		this.toggle = this.toggle.bind(this);
@@ -41,7 +41,7 @@ class Menu extends Component {
 	}
 
 	render() {
-		console.log(this.state.isLogged);
+		console.log(this.props.login);
 		  return (
 				    <div>
 					    <Container className="sticky" fluid={true}>
@@ -53,7 +53,7 @@ class Menu extends Component {
 						        </Col>
 						        
 						    	<Col className="d-flex justify-content-end">
-						    	 	{this.state.isLogged != "null" && this.state.isLogged != "error" ? (<DropdownProfile/>) : (<DropdownLogin/>)}
+						    	 	{!this.props.login ? (<DropdownLogin/>) : (<DropdownProfile/>)}
 								</Col>
 							</Row>
 						</Container>

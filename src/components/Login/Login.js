@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Translate from "../../lang/Translate";
 import axios from "axios";
 import md5 from 'md5';
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
 
@@ -10,7 +11,8 @@ class Login extends Component {
 
         this.state = {
             userName: null,
-            pass: null
+            pass: null,
+            redirect: false
         };
 
         this.userNameChange = this.userNameChange.bind(this);
@@ -34,13 +36,21 @@ class Login extends Component {
             axios.post(`http://localhost:80/api/login`, querystring.stringify({ password, userName }))
                 .then(res => {
                     localStorage.setItem('myData', res.data);
+                    if(res.data !== 'error')
+                        this.props.callback();
                 })
         }
 
-        console.log(localStorage.getItem('myData'));
+        if(localStorage.getItem('myData')[0] !== 'error')
+            this.setState({redirect:true});
     }
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to='/'/>;
+        }
+
         return (
             <main className="container-fluid">
                 <div className="row d-flex justify-content-center">

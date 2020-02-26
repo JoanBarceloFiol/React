@@ -17,33 +17,43 @@ class App extends Component {
   
   constructor(props) {
      super(props);
+     const data = localStorage.getItem('myData').split(',');
+      console.log(data);
 
-     // Idioma per defecte 
+      // Idioma per defecte
      this.state = {
-       preferredLocale: "es"
+         preferredLocale: "es",
+         login: (Number.isInteger(parseInt(data[0])))
      };
+
+     this.reloadPage = this.reloadPage.bind(this);
   }
 
   // Canvia l'idioma de visualització
   changeLanguage = ({ currentTarget: { id } }) => {
      this.setState({
-       preferredLocale: id
+         preferredLocale: id,
      });
   };
+
+  reloadPage(){
+      const data = localStorage.getItem('myData').split(',');
+      this.setState({login: (Number.isInteger(parseInt(data[0])))})
+  }
    
   // Renderitza la App amb el context associat (idioma seleccionat).
   render() {
      return (
        <LocaleContext.Provider value={this.state.preferredLocale}>
          <BrowserRouter>
-             <Menu changeLanguage={this.changeLanguage} preferredLocale={this.state.preferredLocale}/>
+             <Menu changeLanguage={this.changeLanguage} preferredLocale={this.state.preferredLocale} login={this.state.login}/>
                <main className="container-fluid m-main">
                    <Switch>
                        <Route path="/" exact component={Home} />
                        <Route path="/routes" component={Routes} />
                        <Route path="/courses" component={Courses} />
                        <Route path="/social" component={Social} />
-                       <Route path="/login" component={Login} />
+                       <Route path="/login" component={() => <Login callback={this.reloadPage.bind(this)} />}/>
                        <Route path="/register" component={Register} />
                        <Route path="/route/:handle" component={RoutePage} />
                        <Route path="/user/:handle" component={User} />

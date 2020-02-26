@@ -30,16 +30,16 @@ class Comment extends Component {
     }
 
     submitComment(){
-        console.log('hola');
 
         if ( this.state.comment.length >  0 && this.props.id !== undefined) {
             const querystring = require('querystring');
             const userId = localStorage.getItem('myData')[0];
             const text = this.state.comment;
-            console.log(`http://localhost:80/api/route/${this.props.id}/comment`);
             axios.post(`http://localhost:80/api/route/${this.props.id}/comment`, querystring.stringify({ userId, text }))
                 .then(res => {
                     console.log(res.data);
+                    this.props.callback();
+                    this.setState({comment: ''});
                 }).catch(function (error) {
                     console.log(error.response);
             })

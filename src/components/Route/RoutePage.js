@@ -18,6 +18,7 @@ class RoutePage extends Component {
         };
 
         this.getMap = this.getMap.bind(this);
+        this.reloadPage = this.reloadPage.bind(this);
     }
 
     componentDidMount () {
@@ -51,6 +52,18 @@ class RoutePage extends Component {
     getMap(){
         if(this.state.routeAvailable)
             return (<RouteMap lat="39.571359" lng="2.970117" zoom="5" id={this.state.route.id}/>)
+    }
+
+    reloadPage() {
+        console.log('hola');
+        const {handle} = this.props.match.params;
+        let comments = axios.get(`http://localhost:80/api/route/${handle}/comment`);
+
+        comments.then( res => {
+            const comments = res.data;
+            this.setState({comments});
+        });
+
     }
 
     render() {
@@ -138,7 +151,7 @@ class RoutePage extends Component {
                         </div>
                         <hr className="d-block d-lg-none my-4"/>
 
-                        <CommentBox id={route.id}/>
+                        <CommentBox id={route.id} callback={this.reloadPage.bind(this)}/>
 
 
                         {this.state.comments.map(res => this.displayComments
