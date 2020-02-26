@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
 import axios from "axios";
-import PerfilTabs from "./PerfilTabs";
+import UserTabs from "./UserTabs";
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 
-class Perfil extends Component {
+class User extends Component {
 
     constructor(props) {
         super(props);
@@ -40,7 +40,7 @@ class Perfil extends Component {
                             <div class="col">
                                 <a href="#" class="d-inline-block mb-3 h3 text-decoration-none text-dark">{user.userName}</a>
                                 <a href="#" class="ml-3 px-4 btn btn-sm btn-light border mt-n2 d-none d-md-inline-block"><Translate string={'follow'}/></a>
-                                <UncontrolledDropdown setActiveFromChild className="d-inline-block">
+                                <UncontrolledDropdown setActiveFromChild className="d-inline-block cursor-pointer">
                                     <DropdownToggle tag="a" className="btn btn-link text-secondary dropdown-toggle text-decoration-none" caret>
                                         <i className='fa fa-ellipsis-h'></i>
                                     </DropdownToggle>
@@ -84,7 +84,7 @@ class Perfil extends Component {
                 </div>
                 <div className="row mx-0 mx-lg-5 mt-4 d-flex justify-content-center">
                     <div className="col col-lg-10 col-xl-8 mb-3 px-0 mx-n2">
-                        <PerfilTabs/>
+                        <UserTabs/>
                     </div>
                 </div>
             </main>
@@ -92,4 +92,4 @@ class Perfil extends Component {
     }
 }
 
-export default Perfil;
+export default User;
