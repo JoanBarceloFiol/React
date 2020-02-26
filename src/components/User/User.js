@@ -9,18 +9,32 @@ class User extends Component {
     constructor(props) {
         super(props);
 
+        this.toggle = this.toggle.bind(this);
         this.state = {
-            user: []
+            user: [],
+            activeTab: '1',
+            publications: []
         };
     }
 
     componentDidMount(){
         const {handle} = this.props.match.params;
-        let data = axios.get(`http://localhost:80/api/user/${handle}`);
-        data.then( res => {
-            const user = res.data;
-            this.setState({user});
-        });
+        axios.get(`http://localhost:80/api/user/${handle}`)
+            .then(response =>{
+                this.setState({user: response.data});
+                return axios.get(`http://localhost:80/api/user/${this.state.user.id}/publications`);
+            })
+            .then(response =>{
+            this.setState({publications: response.data});
+        })
+    }
+
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
     }
 
     render() {
@@ -84,7 +98,7 @@ class User extends Component {
                 </div>
                 <div className="row mx-0 mx-lg-5 mt-4 d-flex justify-content-center">
                     <div className="col col-lg-10 col-xl-8 mb-3 px-0 mx-n2">
-                        <UserTabs/>
+                        <UserTabs user={user} tab={this.state.activeTab} onTabChange={this.toggle} publications={this.state.publications}/>
                     </div>
                 </div>
             </main>
