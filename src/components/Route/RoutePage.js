@@ -3,7 +3,7 @@ import RouteMap from "./RouteMap";
 import axios from "axios";
 import Comment from "../Comment";
 import Translate from "../../lang/Translate";
-
+import CommentBox from "../CommentBox";
 
 class RoutePage extends Component {
 
@@ -15,7 +15,7 @@ class RoutePage extends Component {
             comments: [],
             avg: [],
             routeAvailable: false
-        }
+        };
 
         this.getMap = this.getMap.bind(this);
     }
@@ -123,7 +123,7 @@ class RoutePage extends Component {
                                 <div className="card-body">
                                     <div className="row px-3">
                                         <div className="col">
-                                            <p className="h2">4.3 <small>/ 5 <span
+                                            <p className="h2">{avg} <small>/ 5 <span
                                                 className="text-muted h6 ml-2"><Translate string={'votes'}/></span>
                                             </small></p>
                                             <i className="fas fa-star text-warning"/>
@@ -138,18 +138,7 @@ class RoutePage extends Component {
                         </div>
                         <hr className="d-block d-lg-none my-4"/>
 
-                        <div className="card mb-3">
-                            <h5 className="card-header"><Translate string={'leaveAComment'}/></h5>
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group">
-                                        <textarea className="form-control" rows="3"/>
-                                    </div>
-                                    <a href="#" className="btn btn-primary rounded shadow-sm text-white"> <Translate string={'submit'}/> &nbsp;&nbsp;
-                                        <i className="fas fa-angle-right"/></a>
-                                </form>
-                            </div>
-                        </div>
+                        <CommentBox id={route.id}/>
 
 
                         {this.state.comments.map(res => this.displayComments
