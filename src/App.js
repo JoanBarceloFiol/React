@@ -11,6 +11,8 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import RoutePage from "./components/Route/RoutePage";
 import User from "./components/User/User";
+import MyRoutes from "./components/MyRoutes/MyRoutes";
+import MyCourses from "./components/MyCourses/MyCourses";
 
 
 class App extends Component {
@@ -57,7 +59,9 @@ class App extends Component {
                        <Route path="/register" component={Register} />
                        <Route path="/route/:handle" component={RoutePage} />
                        <Route path="/user/:handle" component={User} />
-                   </Switch>
+                       <Route path="/my-routes" component={MyRoutes} />
+                       <Route path="/my-courses" component={MyCourses} />
+                  </Switch>
                </main>
              <Footer />
          </BrowserRouter>
