@@ -68,9 +68,11 @@ class Menu extends Component {
 						</Container>
 					
 						<Navbar color="light" light expand="md" className="bg-light p-2 shadow-sm sticky-top sticky-nav">
-					        <NavbarBrand href="/">
+					        <NavbarBrand>
+								<Link className="text-decoration-none" to='/'>
 					        	<img src="http://dev.goatrails.dawman.info/img/logo.png" className="rounded mr-2 float-left" alt="" height="50px"/>
 					        	<h1 className="text-custom-secondary">GOATrails</h1>
+								</Link>
 					        </NavbarBrand>
 					        <NavbarToggler onClick={this.toggle} />
 					        <Collapse isOpen={this.state.isOpen} navbar className="h5">
