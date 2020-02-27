@@ -10,10 +10,16 @@ class Routes extends Component {
 
         this.state = {
             routes: []
-        }
+        };
+
+        this.setRoutesByText = this.setRoutesByText.bind(this);
     }
 
     componentDidMount() {
+        this.setRoutes();
+    }
+
+    setRoutes(){
         let data = axios.get('http://localhost:80/api/routes/basic');
         data.then( res => {
             const routes = res.data;
@@ -21,14 +27,24 @@ class Routes extends Component {
         });
     }
 
+    setRoutesByText(event){
+        const text = event.target.value;
+
+        if(text !== '') {
+            let data = axios.get(`http://localhost:80/api/routes/text?text=${text}`);
+            data.then(res => {
+                const routes = res.data;
+                this.setState({routes});
+            });
+        }else
+            this.setRoutes();
+    }
+
     mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner){
-        console.log(desc);
         return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>)
     }
 
     render() {
-        console.log(this.state.routes);
-
         return (
             <div>
                 <div className="row">
@@ -38,7 +54,7 @@ class Routes extends Component {
                             <div className="col mx-3 mx-md-5 mt-4">
                                 <div className="input-group mb-3 mb-md-0 pl-0">
                                     <div className="input-group mb-3 my-0">
-                                        <input type="text" className="form-control" placeholder="search" aria-label="search" aria-describedby="basic-addon2"/>
+                                        <input onChange={this.setRoutesByText} type="text" className="form-control" placeholder="search" aria-label="search" aria-describedby="basic-addon2"/>
                                         <div className="input-group-append">
                                             <button className="btn btn-outline-primary" type="button"><i className="fa fa-search"/></button>
                                         </div>
