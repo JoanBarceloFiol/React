@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RoutesMap from "./RoutesMap";
 import RouteElement from "./RouteElement";
 import axios from 'axios';
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 class Routes extends Component {
 
@@ -9,14 +10,26 @@ class Routes extends Component {
         super(props);
 
         this.state = {
-            routes: []
+            routes: [],
+            lvl: [],
+            selectedLvl: []
         };
 
         this.setRoutesByText = this.setRoutesByText.bind(this);
+        this.displayLvl = this.displayLvl.bind(this);
+        this.modifyLvl = this.modifyLvl.bind(this);
+        this.mountRoutes = this.mountRoutes.bind(this);
+        this.checkLvl = this.checkLvl.bind(this);
     }
 
     componentDidMount() {
         this.setRoutes();
+
+        let data = axios.get('http://localhost:80/api/level');
+        data.then( res => {
+            const lvl = res.data;
+            this.setState({lvl});
+        });
     }
 
     setRoutes(){
@@ -40,8 +53,53 @@ class Routes extends Component {
             this.setRoutes();
     }
 
-    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner){
-        return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>)
+    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner) {
+
+        if (this.state.selectedLvl.length > 0) {
+            if (this.checkLvl(diff))
+                return (
+                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+        } else {
+            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+        }
+
+    }
+
+    displayLvl(name){
+        return (
+            <li>
+                <div className="checkbox">
+                    <label>
+                        <input type="checkbox" value={name} onClick={this.modifyLvl}/> {name}
+                    </label>
+                </div>
+            </li>
+        )
+    }
+
+    modifyLvl(event){
+        let lvl = event.target.value;
+        if(this.state.selectedLvl.includes(lvl)){
+            let index = this.state.selectedLvl.indexOf(lvl);
+            if (index > -1) {
+                this.state.selectedLvl.splice(index, 1);
+            }
+        }else
+            this.state.selectedLvl.push(lvl);
+
+        this.setState({routes: this.state.routes});
+        console.log(this.state.selectedLvl);
+    }
+
+    checkLvl(lvl){
+        let lvlArray = this.state.selectedLvl;
+
+        for (let i = 0; i < lvlArray.length ; i++) {
+            if(lvl === lvlArray[i])
+                return true;
+        }
+
+        return false;
     }
 
     render() {
@@ -66,8 +124,27 @@ class Routes extends Component {
                             <div className="col mx-3 mx-md-5 mt-2">
                                 <div>
                                     <i className="mt-1 float-left d-inline fas fa-angle-double-left text-secondary"/>
-                                    <div className="d-inline mx-2 text-secondary">zone</div>
-                                    <div className="d-inline mx-2 text-secondary">difficulty</div>
+                                    <div className="btn-group">
+                                        <DropdownButton className="mx-2" id="dropdown-basic-button" title="zone">
+                                                <li>
+                                                    <div className="checkbox">
+                                                        <label>
+                                                            <input type="checkbox"/>Two
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div className="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" />Two
+                                                        </label>
+                                                    </div>
+                                                </li>
+                                        </DropdownButton>
+                                        <DropdownButton id="dropdown-basic-button " title="difucltat">
+                                            {this.state.lvl.map(res => this.displayLvl(res.nom))}
+                                        </DropdownButton>
+                                    </div>
                                     <div className="mx-2 text-secondary d-inline d-md-none d-lg-inline">distance</div>
                                     <i className="mt-1 d-inline float-right fas fa-angle-double-right text-secondary"/>
                                 </div>
