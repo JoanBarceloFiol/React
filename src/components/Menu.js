@@ -23,6 +23,8 @@ import DropdownProfile from "./DropdownProfile";
 import LanguagePicker from "./LanguagePicker.js";
 
 class Menu extends Component {
+    flag = false;
+
 	constructor(props) {
 		super(props);
 
@@ -42,11 +44,14 @@ class Menu extends Component {
 	}
 
 	closeSesion(){
-		this.setState({flag:true})
+	    this.flag = true;
+		this.forceUpdate();
 	}
 
 	isLogged(){
-		return (this.state.flag) ? false : this.props.login;
+	    let flag = (this.flag) ? false : this.props.login;
+	    this.flag = false;
+		return flag;
 	}
 
 	render() {
