@@ -1,7 +1,17 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
+import DropdownLogin from "../DropdownLogin";
+import DropdownProfile from "../DropdownProfile";
+import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
 
 class UserPublication extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    hasImg(){
+        return (this.props.img === "") ? false : true;
+    }
 
     render() {
         return (
@@ -16,39 +26,34 @@ class UserPublication extends Component {
                                 <div className="card-header">
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <a href="#">
-                                                <img title={this.props.user}
+                                            <a href={`/user/${this.props.userName}`}>
+                                                <img title={this.props.userName}
                                                      className="d-flex mr-3 rounded-circle shadow-sm storyborder"
                                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                                      width="50px"/>
                                             </a>
                                             <div className="ml-2">
-                                                <a href="#" title={this.props.user}
-                                                   className="d-block h5 m-0 text-decoration-none text-dark">{this.props.user} </a>
+                                                <a href={`/user/${this.props.userName}`} title={this.props.userName}
+                                                   className="d-block h5 m-0 text-decoration-none text-dark">{this.props.userName} </a>
                                                 <small className="text-muted h7 mb-2"> <i
                                                     className="fa fa-clock-o"></i> 10 min</small>
                                             </div>
                                         </div>
-                                        <div className="dropdown">
-                                            <button
-                                                className="text-old-primary btn btn-link dropdown-toggle text-decoration-none"
-                                                type="button" id="gedf-drop1" data-toggle="dropdown"
-                                                aria-haspopup="true" aria-expanded="false">
-                                                <i className="fa fa-ellipsis-h"></i>
-                                            </button>
-                                            <div className="dropdown-menu dropdown-menu-right "
-                                                 aria-labelledby="gedf-drop1">
-                                                <a className="dropdown-item" href="#"><i
-                                                    className="fas fa-exclamation-circle"></i> Reportar</a>
-                                            </div>
-                                        </div>
+                                        <UncontrolledDropdown setActiveFromChild className="d-inline-block cursor-pointer">
+                                            <DropdownToggle tag="a" className="btn btn-link text-secondary dropdown-toggle text-decoration-none" caret>
+                                                <i className='fa fa-ellipsis-h'></i>
+                                            </DropdownToggle>
+                                            <DropdownMenu right className="dropdown-menu-left">
+                                                <DropdownItem tag="a" href="#" className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
+                                            </DropdownMenu>
+                                        </UncontrolledDropdown>
                                     </div>
 
                                 </div>
 
                                 <div className="card-body">
-                                    <p className="card-text">{this.props.text}
-                                    </p>
+                                    {this.hasImg() ? (<img src={`http://localhost:80/img/${this.props.img}`} className="img-fluid" alt=""/>) : ('')}
+                                    <p className="card-text">{this.props.text}</p>
                                 </div>
                                 <div className="card-footer">
                                     <a href="#" className="text-old-primary mr-2"><i className="far fa-heart h4"></i>

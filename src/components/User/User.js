@@ -13,7 +13,8 @@ class User extends Component {
         this.state = {
             user: [],
             activeTab: '1',
-            publications: []
+            publications: [],
+            comments: []
         };
     }
 
@@ -26,6 +27,7 @@ class User extends Component {
             })
             .then(response =>{
             this.setState({publications: response.data});
+            return axios.get(`http://localhost:80/api/user/${this.state.user.id}/comments`);
         })
     }
 
@@ -98,7 +100,7 @@ class User extends Component {
                 </div>
                 <div className="row mx-0 mx-lg-5 mt-4 d-flex justify-content-center">
                     <div className="col col-lg-10 col-xl-8 mb-3 px-0 mx-n2">
-                        <UserTabs user={user} tab={this.state.activeTab} onTabChange={this.toggle} publications={this.state.publications}/>
+                        <UserTabs user={user} tab={this.state.activeTab} onTabChange={this.toggle} publications={this.state.publications} comments={this.state.comments}/>
                     </div>
                 </div>
             </main>
