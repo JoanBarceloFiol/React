@@ -5,6 +5,7 @@ import axios from 'axios';
 import DropdownButton from "react-bootstrap/DropdownButton";
 
 class Routes extends Component {
+    selectedFiltre = [];
 
     constructor(props) {
         super(props);
@@ -12,14 +13,18 @@ class Routes extends Component {
         this.state = {
             routes: [],
             lvl: [],
-            selectedLvl: []
+            selectedLvl: [],
+            mod: [],
+            selectedMod: []
         };
 
         this.setRoutesByText = this.setRoutesByText.bind(this);
-        this.displayLvl = this.displayLvl.bind(this);
-        this.modifyLvl = this.modifyLvl.bind(this);
+        this.displayFiltre = this.displayFiltre.bind(this);
+        this.setFiltre = this.setFiltre.bind(this);
         this.mountRoutes = this.mountRoutes.bind(this);
         this.checkLvl = this.checkLvl.bind(this);
+        this.modifyFiltre = this.modifyFiltre.bind(this);
+        this.checkMod = this.checkMod.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +34,12 @@ class Routes extends Component {
         data.then( res => {
             const lvl = res.data;
             this.setState({lvl});
+        });
+
+        data = axios.get('http://localhost/api/modality');
+        data.then( res => {
+            const mod = res.data;
+            this.setState({mod});
         });
     }
 
@@ -44,7 +55,7 @@ class Routes extends Component {
         const text = event.target.value;
 
         if(text !== '') {
-            let data = axios.get(`http://localhost:80/api/routes/text?text=${text}`);
+            let data = axios.get(`http://localhost:80/api/routes/basic/text?text=${text}`);
             data.then(res => {
                 const routes = res.data;
                 this.setState({routes});
@@ -53,42 +64,60 @@ class Routes extends Component {
             this.setRoutes();
     }
 
-    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner) {
+    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner, mod) {
 
-        if (this.state.selectedLvl.length > 0) {
-            if (this.checkLvl(diff))
+        if (this.state.selectedLvl.length > 0 || this.state.selectedMod.length > 0) {
+            let lvlFlag = (this.state.selectedLvl.length > 0) ? this.checkLvl(diff) : true;
+            let modFlag = (this.state.selectedMod.length > 0) ? this.checkMod(mod) : true;
+            if (modFlag && lvlFlag)
                 return (
-                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
         } else {
-            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
         }
 
     }
 
-    displayLvl(name){
+    displayFiltre(name, parent){
+
         return (
             <li>
                 <div className="checkbox">
                     <label>
-                        <input type="checkbox" value={name} onClick={this.modifyLvl}/> {name}
+                        <input type="checkbox" value={name + ',' + parent} onClick={this.setFiltre}/> {name}
                     </label>
                 </div>
             </li>
         )
     }
 
-    modifyLvl(event){
-        let lvl = event.target.value;
-        if(this.state.selectedLvl.includes(lvl)){
-            let index = this.state.selectedLvl.indexOf(lvl);
+    modifyFiltre(name){
+        switch (name) {
+            case 'modality':
+                this.selectedFiltre = this.state.selectedMod;
+                break;
+            case 'lvl':
+                this.selectedFiltre = this.state.selectedLvl;
+                break;
+        }
+    }
+
+
+    setFiltre(event){
+        let values = event.target.value.split(',');
+        let lvl = values[0];
+        this.modifyFiltre(values[1]);
+
+        if(this.selectedFiltre.includes(lvl)){
+            let index = this.selectedFiltre.indexOf(lvl);
             if (index > -1) {
-                this.state.selectedLvl.splice(index, 1);
+                this.selectedFiltre.splice(index, 1);
             }
         }else
-            this.state.selectedLvl.push(lvl);
+            this.selectedFiltre.push(lvl);
+
 
         this.setState({routes: this.state.routes});
-        console.log(this.state.selectedLvl);
     }
 
     checkLvl(lvl){
@@ -100,6 +129,18 @@ class Routes extends Component {
         }
 
         return false;
+    }
+
+    checkMod(mod){
+        let modArray = this.state.selectedMod;
+        mod = mod.split(',');
+
+        for (let i = 0; i < modArray.length ; i++) {
+            if(!mod.includes(modArray[i]))
+                return false;
+        }
+
+        return true;
     }
 
     render() {
@@ -142,7 +183,10 @@ class Routes extends Component {
                                                 </li>
                                         </DropdownButton>
                                         <DropdownButton id="dropdown-basic-button " title="difucltat">
-                                            {this.state.lvl.map(res => this.displayLvl(res.nom))}
+                                            {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
+                                        </DropdownButton>
+                                        <DropdownButton id="dropdown-basic-button " title="Modalitat">
+                                            {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
                                         </DropdownButton>
                                     </div>
                                     <div className="mx-2 text-secondary d-inline d-md-none d-lg-inline">distance</div>
@@ -155,7 +199,7 @@ class Routes extends Component {
                             <div className="col pt-2">
                                 {this.state.routes.map(res => this.mountRoutes
                                 (res.id, res.titol, res.distancia, res.id_dificultat, res.duracio, res.maxim_persones,
-                                res.descripcio, res.owner))}
+                                res.descripcio, res.owner, res.modalitat))}
                             </div>
                         </div>
 

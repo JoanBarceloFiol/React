@@ -47,6 +47,7 @@ class RouteElement extends Component {
                                 className="mr-2"> {this.props.dist}km &nbsp;</span>
                                 <i className="fas fa-medal"/> <a className="mr-2 text-old-primary" href="#"> {this.props.diff} </a>
                                 <i className="fas fa-map-marker-alt"/> <a className="mr-2 text-old-primary" href="#"> routeZone </a>
+                                <i className="fas fa-map-marker-alt"/> <a className="mr-2 text-old-primary" href="#"> {this.props.mod} </a>
                             </small>
                         </div>
                         <p>{this.props.desc}</p>
