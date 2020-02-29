@@ -71,9 +71,9 @@ class Routes extends Component {
             let modFlag = (this.state.selectedMod.length > 0) ? this.checkMod(mod) : true;
             if (modFlag && lvlFlag)
                 return (
-                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
         } else {
-            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur}/>);
+            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
         }
 
     }
@@ -134,16 +134,13 @@ class Routes extends Component {
     checkMod(mod){
         let modArray = this.state.selectedMod;
         mod = mod.split(',');
-        console.log(modArray);
-        console.log(mod);
+
         for (let i = 0; i < modArray.length ; i++) {
-            for (let j = 0; j < mod.length ; j++) {
-                if(mod[j] === modArray[i])
-                    return true;
-            }
+            if(!mod.includes(modArray[i]))
+                return false;
         }
 
-        return false;
+        return true;
     }
 
     render() {
