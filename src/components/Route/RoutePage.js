@@ -43,9 +43,9 @@ class RoutePage extends Component {
         });
     }
 
-    displayComments(id, userName,text){
+    displayComments(id, userId,text){
         if(id !== undefined) {
-            return (<Comment id={id} userName={userName} text={text}/>)
+            return (<Comment id={id} userId={userId} text={text}/>)
         }
     }
 

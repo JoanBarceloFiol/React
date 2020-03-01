@@ -21,7 +21,7 @@ import {
 import classnames from 'classnames';
 import Translate from "../../lang/Translate";
 import UserPublication from "./UserPublication";
-import UserComments from "./UserComments";
+import Comment from "../Comment";
 import UserArchievements from "./UserArchievements";
 import UserRoutes from "./UserRoutes";
 import UserCourses from "./UserCourses";
@@ -40,8 +40,8 @@ class UserTabs extends Component{
         return (<UserPublication id={id} img={img} text={text} user={user} route={route} commentNum={commentNum} likesNum={likesNum} userName={this.props.user.userName}/>)
     }
 
-    mountComments(id, idPerfil, text, idResposta){
-        return (<UserComments id={id} idPerfil={idPerfil} text={text} idResponse={idResposta}/>)
+    mountComments(id, userId, text, responseId){
+        return (<Comment id={id} userId={userId} text={text} responseId={responseId}/>)
     }
 
     render() {
@@ -97,10 +97,8 @@ class UserTabs extends Component{
                          (res.id, res.img, res.text, res.user, res.route, res.commentNum, res.likesNum))}
                      </TabPane>
                      <TabPane tabId="2">
-                         {/*this.props.comments.map(res => this.mountComments
-                         (res.id, res.idPerfil, res.text, res.idResposta))*/}
-                         {<UserComments id="1" userName="sergio" text="valiste verga" idResponse="null"/>}
-                         {console.log(this.props.publications)}
+                         {this.props.comments.map(res => this.mountComments
+                         (res.id, res.userId, res.text, res.responseId))}
                      </TabPane>
                      <TabPane tabId="3">
                          <UserArchievements />

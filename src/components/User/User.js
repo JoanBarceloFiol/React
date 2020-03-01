@@ -26,8 +26,11 @@ class User extends Component {
                 return axios.get(`http://localhost:80/api/user/${this.state.user.id}/publications`);
             })
             .then(response =>{
-            this.setState({publications: response.data});
-            return axios.get(`http://localhost:80/api/user/${this.state.user.id}/comments`);
+                this.setState({publications: response.data});
+                return axios.get(`http://localhost:80/api/user/${this.state.user.id}/comment`);
+            })
+            .then(response =>{
+                this.setState({comments: response.data});
         })
     }
 
@@ -71,14 +74,13 @@ class User extends Component {
                         <div class="row mt-2 d-none d-md-block">
                             <div class="col">
                                 <div class="d-inline text-center"><b>{user.publications}</b> <small class="text-secondary d-lg-none"><b><Translate string={'posts'}/></b></small><span class="d-md-none d-lg-inline text-secondary"><Translate string={'posts'}/></span></div>
-                                <div class="d-inline text-center"><b class="ml-md-3">{user.follows_num}</b> <small class="text-secondary d-lg-none"><b><Translate string={'followers'}/></b></small><span class="d-md-none d-lg-inline text-secondary"><Translate string={'followers'}/></span></div>
-                                <div class="d-inline text-center"><b class="ml-md-3">{user.followers_num}</b> <small class="text-secondary d-lg-none"><b><Translate string={'following'}/></b></small><span class="d-md-none d-lg-inline text-secondary"><Translate string={'following'}/></span></div>
+                                <div class="d-inline text-center"><b class="ml-md-3">{user.followers_num}</b> <small class="text-secondary d-lg-none"><b><Translate string={'followers'}/></b></small><span class="d-md-none d-lg-inline text-secondary"><Translate string={'followers'}/></span></div>
+                                <div class="d-inline text-center"><b class="ml-md-3">{user.follows_num}</b> <small class="text-secondary d-lg-none"><b><Translate string={'following'}/></b></small><span class="d-md-none d-lg-inline text-secondary"><Translate string={'following'}/></span></div>
                             </div>
                         </div>
                         <div class="row mt-4 d-none d-md-block">
                             <div class="col">
                                 <p>{user.description}</p>
-                                <small class="text-secondary"><Translate string={'followedBy'}/> <a href="#" class="text-decoration-none font-weight-bold text-secondary">Toni</a>, <a href="#" class="text-decoration-none font-weight-bold text-secondary">Reina isabel</a>, <a href="#" class="text-decoration-none font-weight-bold text-secondary">Bernat</a> + 16 <Translate string={'more'}/></small>
                             </div>
                         </div>
                     </div>
@@ -87,13 +89,12 @@ class User extends Component {
                     <div class="col">
                         <div class="mx-0 mx-sm-5 row mt-3">
                             <div class="col text-center"><b>{user.publications}</b><br/> <small class="text-secondary"><b><Translate string={'posts'}/></b></small></div>
-                            <div class="col text-center"><b class="ml-md-3">{user.follows_num}</b><br/> <small class="text-secondary"><b><Translate string={'followers'}/></b></small></div>
-                            <div class="col text-center"><b class="ml-md-3">{user.followers_num}</b><br/> <small class="text-secondary"><b><Translate string={'following'}/></b></small></div>
+                            <div class="col text-center"><b class="ml-md-3">{user.followers_num}</b><br/> <small class="text-secondary"><b><Translate string={'followers'}/></b></small></div>
+                            <div class="col text-center"><b class="ml-md-3">{user.follows_num}</b><br/> <small class="text-secondary"><b><Translate string={'following'}/></b></small></div>
                         </div>
                         <div class="mx-0 mx-sm-5 row mt-4">
                             <div class="col">
                                 <p>{user.description}</p>
-                                <small class="text-secondary"><Translate string={'followedBy'}/> <a href="#" class="text-decoration-none font-weight-bold text-secondary">Toni</a>, <a href="#" class="text-decoration-none font-weight-bold text-secondary">Reina isabel</a> + 17 <Translate string={'more'}/></small>
                             </div>
                         </div>
                     </div>
