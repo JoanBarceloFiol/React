@@ -15,16 +15,22 @@ class Routes extends Component {
             lvl: [],
             selectedLvl: [],
             mod: [],
-            selectedMod: []
+            selectedMod: [],
+            zones: [],
+            selectedZones: [],
+            minKm: '',
+            maxKm: ''
         };
 
         this.setRoutesByText = this.setRoutesByText.bind(this);
         this.displayFiltre = this.displayFiltre.bind(this);
         this.setFiltre = this.setFiltre.bind(this);
         this.mountRoutes = this.mountRoutes.bind(this);
-        this.checkLvl = this.checkLvl.bind(this);
+        this.checkBasicFiltre = this.checkBasicFiltre.bind(this);
         this.modifyFiltre = this.modifyFiltre.bind(this);
         this.checkMod = this.checkMod.bind(this);
+        this.minChange = this.minChange.bind(this);
+        this.maxChange = this.maxChange.bind(this);
     }
 
     componentDidMount() {
@@ -40,6 +46,12 @@ class Routes extends Component {
         data.then( res => {
             const mod = res.data;
             this.setState({mod});
+        });
+
+        data = axios.get('http://localhost/api/region');
+        data.then( res => {
+            const zones = res.data;
+            this.setState({zones});
         });
     }
 
@@ -64,16 +76,25 @@ class Routes extends Component {
             this.setRoutes();
     }
 
-    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner, mod) {
+    mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner, mod, zone) {
 
-        if (this.state.selectedLvl.length > 0 || this.state.selectedMod.length > 0) {
-            let lvlFlag = (this.state.selectedLvl.length > 0) ? this.checkLvl(diff) : true;
+        if (this.state.selectedLvl.length > 0 || this.state.selectedMod.length > 0 || this.state.selectedZones.length > 0
+            || this.state.minKm !== '' || this.state.maxKm !== '') {
+
+            let lvlFlag = (this.state.selectedLvl.length > 0) ? this.checkBasicFiltre(diff, this.state.selectedLvl) : true;
+            let zoneFlag = (this.state.selectedZones.length > 0) ? this.checkBasicFiltre(zone, this.state.selectedZones) : true;
             let modFlag = (this.state.selectedMod.length > 0) ? this.checkMod(mod) : true;
-            if (modFlag && lvlFlag)
+            let minFlag = (this.state.minKm === '' || parseInt(dist) >=  parseInt(this.state.minKm));
+            let maxFlag = (this.state.maxKm === '' || parseInt(dist) <=  parseInt(this.state.maxKm));
+
+            console.log(maxFlag);
+
+            if (modFlag && lvlFlag && zoneFlag && maxFlag && minFlag)
                 return (
-                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
+                    <RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod} zone={zone}/>);
+
         } else {
-            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod}/>);
+            return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod} zone={zone}/>);
         }
 
     }
@@ -99,6 +120,9 @@ class Routes extends Component {
             case 'lvl':
                 this.selectedFiltre = this.state.selectedLvl;
                 break;
+            case 'zone':
+                this.selectedFiltre = this.state.selectedZones;
+                break;
         }
     }
 
@@ -120,11 +144,9 @@ class Routes extends Component {
         this.setState({routes: this.state.routes});
     }
 
-    checkLvl(lvl){
-        let lvlArray = this.state.selectedLvl;
-
-        for (let i = 0; i < lvlArray.length ; i++) {
-            if(lvl === lvlArray[i])
+    checkBasicFiltre(val, array){
+        for (let i = 0; i < array.length ; i++) {
+            if(val === array[i])
                 return true;
         }
 
@@ -141,6 +163,21 @@ class Routes extends Component {
         }
 
         return true;
+    }
+
+    minChange(event){
+        let min = event.target.value;
+
+        if(parseInt(min) || min === '')
+            this.setState({minKm: (min === '') ? '' : parseInt(min)});
+
+    }
+
+    maxChange(event){
+        let max = event.target.value;
+
+        if(parseInt(max) || max === '')
+            this.setState({maxKm: (max === '') ? '' : parseInt(max)});
     }
 
     render() {
@@ -162,35 +199,32 @@ class Routes extends Component {
                             </div>
                         </div>
                         <div className="row border-bottom" >
-                            <div className="col mx-3 mx-md-5 mt-2">
+                            <div className="col mx-3 mx-md-5 mt-2 mb-1">
                                 <div>
-                                    <i className="mt-1 float-left d-inline fas fa-angle-double-left text-secondary"/>
                                     <div className="btn-group">
                                         <DropdownButton className="mx-2" id="dropdown-basic-button" title="zone">
-                                                <li>
-                                                    <div className="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"/>Two
-                                                        </label>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div className="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" />Two
-                                                        </label>
-                                                    </div>
-                                                </li>
+                                            {this.state.zones.map(res => this.displayFiltre(res.name, 'zone'))}
                                         </DropdownButton>
-                                        <DropdownButton id="dropdown-basic-button " title="difucltat">
+                                        <DropdownButton className="mx-2" id="dropdown-basic-button " title="difucltat">
                                             {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
                                         </DropdownButton>
-                                        <DropdownButton id="dropdown-basic-button " title="Modalitat">
+                                        <DropdownButton className="mx-2" id="dropdown-basic-button " title="Modalitat">
                                             {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
                                         </DropdownButton>
+                                        <form>
+                                            <div className="form-row">
+                                                <div className="col-2 pt-1 pl-2">
+                                                    KM:
+                                                </div>
+                                                <div className="col-5">
+                                                    <input type="text" className="form-control" placeholder="Min" value={this.state.minKm} onChange={this.minChange} />
+                                                </div>
+                                                <div className="col-5">
+                                                    <input type="text" className="form-control" placeholder="Max" value={this.state.maxKm} onChange={this.maxChange}/>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div className="mx-2 text-secondary d-inline d-md-none d-lg-inline">distance</div>
-                                    <i className="mt-1 d-inline float-right fas fa-angle-double-right text-secondary"/>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +233,7 @@ class Routes extends Component {
                             <div className="col pt-2">
                                 {this.state.routes.map(res => this.mountRoutes
                                 (res.id, res.titol, res.distancia, res.id_dificultat, res.duracio, res.maxim_persones,
-                                res.descripcio, res.owner, res.modalitat))}
+                                res.descripcio, res.owner, res.modalitat, res.zone))}
                             </div>
                         </div>
 
