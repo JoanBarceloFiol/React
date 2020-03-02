@@ -198,34 +198,34 @@ class Routes extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="row border-bottom" >
-                            <div className="col mx-3 mx-md-5 mt-2 mb-1">
-                                <div>
-                                    <div className="btn-group">
-                                        <DropdownButton className="mx-2" id="dropdown-basic-button" title="zone">
-                                            {this.state.zones.map(res => this.displayFiltre(res.name, 'zone'))}
-                                        </DropdownButton>
-                                        <DropdownButton className="mx-2" id="dropdown-basic-button " title="difucltat">
-                                            {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
-                                        </DropdownButton>
-                                        <DropdownButton className="mx-2" id="dropdown-basic-button " title="Modalitat">
-                                            {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
-                                        </DropdownButton>
-                                        <form>
-                                            <div className="form-row">
-                                                <div className="col-2 pt-1 pl-2">
-                                                    KM:
-                                                </div>
-                                                <div className="col-5">
-                                                    <input type="text" className="form-control" placeholder="Min" value={this.state.minKm} onChange={this.minChange} />
-                                                </div>
-                                                <div className="col-5">
-                                                    <input type="text" className="form-control" placeholder="Max" value={this.state.maxKm} onChange={this.maxChange}/>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div className="row justify-content-between border-bottom" >
+                            <div className="col-12 col-xl-4 ml-3 ml-md-5 mt-2 mb-1 ">
+                                <div className="btn-group">
+                                    <DropdownButton className="mr-2" id="dropdown-basic-button" title="zone">
+                                        {this.state.zones.map(res => this.displayFiltre(res.name, 'zone'))}
+                                    </DropdownButton>
+                                    <DropdownButton className="mx-2" id="dropdown-basic-button " title="difucltat">
+                                        {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
+                                    </DropdownButton>
+                                    <DropdownButton className="ml-2" id="dropdown-basic-button " title="Modalitat">
+                                        {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
+                                    </DropdownButton>
                                 </div>
+                            </div>
+                            <div className="col-12 col-xl-4 mr-4 mt-2 mb-1 ">
+                                <form>
+                                    <div className="row">
+                                        <div className="col-2 pt-1 pl-2 mt-1">
+                                            KM:
+                                        </div>
+                                        <div className="col-5 px-1">
+                                            <input type="text" className="form-control" placeholder="Min" value={this.state.minKm} onChange={this.minChange} />
+                                        </div>
+                                        <div className="col-5 px-1">
+                                            <input type="text" className="form-control" placeholder="Max" value={this.state.maxKm} onChange={this.maxChange}/>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
