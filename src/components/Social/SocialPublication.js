@@ -1,10 +1,30 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
 import Publicar from "../Publicar.js";
+import axios from "axios";
+import UserPublication from "../User/UserPublication";
 
 class SocialPublication extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            publications: []
+        }
+    }
+
+    componentDidMount() {
+        let id = localStorage.getItem('myData').split(',')[0];
+        let data = axios.get(`http://localhost:80/api/publication/followers/${id}`);
+        data.then( res => {
+            console.log(res.data);
+            this.setState({publications: res.data})
+        });
+    }
+
+    displayPublication(userName, text, img, comment, likes){
+        console.log(userName);
+        return (<UserPublication userName={userName} text={text} img={img} comment={comment} likes={likes}/>)
     }
 
     render() {
@@ -12,8 +32,8 @@ class SocialPublication extends Component {
             <div className="col-md-8 col-lg-6 gedf-main">
             <Publicar/>
 
-                <div id="publication">
-
+                <div id="publication" >
+                    {this.state.publications.map(res => this.displayPublication(res.user, res.text, res.img, res.comment_num, res.likes_num))}
                 </div>
 
                 <div className="card gedf-card my-4 d-block d-md-none">

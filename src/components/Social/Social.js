@@ -53,7 +53,7 @@ class Social extends Component {
 
                 <div class="container-fluid gedf-wrapper mt-3">
                     <div class="row">
-                        <SocialPerfil name={'jas'} followers={0} following={0} description={'Soy el del bootstrap'}/>
+                        <SocialPerfil/>
                         <SocialPublication />
                         <SocialSuggestions />
                     </div>

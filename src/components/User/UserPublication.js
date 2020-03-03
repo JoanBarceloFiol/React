@@ -57,9 +57,9 @@ class UserPublication extends Component {
                                 </div>
                                 <div className="card-footer">
                                     <a href="#" className="text-old-primary mr-2"><i className="far fa-heart h4"></i>
-                                        <small className="h6">23K</small></a>
+                                        <small className="h6">{this.props.likes}</small></a>
                                     <a href="#" className="text-secondary mx-2"><i className="fas fa-comments h4"></i>
-                                        <small className="h6">145</small></a>
+                                        <small className="h6">{this.props.comment}</small></a>
                                     <a href="#" className="text-secondary mx-2"><i className="fas fa-share h4"></i></a>
                                 </div>
                             </div>

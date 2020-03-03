@@ -1,9 +1,31 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
+import axios from "axios";
 
 class SocialPerfil extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            userName : '',
+            description: '',
+            followers: '',
+            following:''
+        }
+    }
+
+    componentDidMount() {
+        let id = localStorage.getItem('myData').split(',')[1];
+        let data = axios.get(`http://localhost:80/api/user/${id}`);
+        data.then( res => {
+            console.log(res.data)
+            this.setState({
+                userName : res.data.userName,
+                description: res.data.description,
+                followers: res.data.followers_num,
+                following: res.data.follows_num
+            });
+        });
     }
 
     render() {
@@ -16,19 +38,19 @@ class SocialPerfil extends Component {
                                  src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                  width="75px"/>
                         </a>
-                        <a id="myUserName" className="h5 text-dark text-decoration-none">{this.props.name}</a>
+                        <a id="myUserName" className="h5 text-dark text-decoration-none">{this.state.userName}</a>
                         <div className="h7">
-                            <p id="myUserDescription">{this.props.description}</p>
+                            <p id="myUserDescription">{this.state.description}</p>
                         </div>
                     </div>
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item">
                             <div className="h6 text-muted"><Translate string={'followers'}/></div>
-                            <div className="h5"><p id="myFollowersNum">{this.props.followers}</p></div>
+                            <div className="h5"><p id="myFollowersNum">{this.state.followers}</p></div>
                         </li>
                         <li className="list-group-item">
                             <div className="h6 text-muted"><Translate string={'following'}/></div>
-                            <div className="h5"><p id="myFollowingNum">{this.props.following}</p></div>
+                            <div className="h5"><p id="myFollowingNum">{this.state.following}</p></div>
                         </li>
                     </ul>
                 </div>
