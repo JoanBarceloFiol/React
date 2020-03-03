@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import { 
 	TabContent, 
 	TabPane, 
@@ -21,29 +21,41 @@ import {
 import classnames from 'classnames';
 import Translate from "../lang/Translate";
 
-const Publicar = (props) => {
-  const [activeTab, setActiveTab] = useState('1');
+class Publicar extends Component{
+	
+    constructor(props) {
+        super(props);
+        this.state = {
+        	activeTab: '1'
+        }
+    }
 
-  const toggle = tab => {
-    if(activeTab !== tab) setActiveTab(tab);
-  }
-
+    changeTab(tab){
+            if (this.state.activeTab !== tab) {
+                this.setState({
+                    activeTab: tab
+                });
+            }
+    }
+  
+  render() {
+	  
   return (
     <Card ClassName="gedf-card">
       <CardHeader>
       <Nav tabs className="card-header-tabs">
-        <NavItem>
+        <NavItem className="cursor-pointer">
           <NavLink
-            className={classnames({ active: activeTab === '1' })}
-            onClick={() => { toggle('1'); }}
+            className={classnames({ active: this.state.activeTab === '1' })}
+            onClick={() => {this.changeTab('1')}}
           >
           <Translate string={'publication'}/>
           </NavLink>
         </NavItem>
-        <NavItem>
+        <NavItem className="cursor-pointer">
           <NavLink
-            className={classnames({ active: activeTab === '2' })}
-            onClick={() => { toggle('2'); }}
+            className={classnames({ active: this.state.activeTab === '2' })}
+            onClick={() => {this.changeTab('2')}}
           >
           <Translate string={'images'}/>
           </NavLink>
@@ -51,7 +63,7 @@ const Publicar = (props) => {
       </Nav>
       </CardHeader>
       <CardBody>
-      <TabContent activeTab={activeTab}>
+      <TabContent activeTab={this.state.activeTab}>
         <TabPane tabId="1">
         <div className="form-group">
         <label className="sr-only" for="message">Compartir</label>
@@ -87,6 +99,7 @@ const Publicar = (props) => {
       </CardBody>
     </Card>
   );
+  }
 }
 
 export default Publicar;
