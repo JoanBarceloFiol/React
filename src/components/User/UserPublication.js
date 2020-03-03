@@ -10,7 +10,7 @@ class UserPublication extends Component {
     }
 
     hasImg(){
-        return (this.props.img === "") ? false : true;
+        return (this.props.img === null) ? false : true;
     }
 
     render() {
@@ -51,9 +51,9 @@ class UserPublication extends Component {
 
                                 </div>
 
-                                <div className="card-body">
+                                <div className="card-body p-0">
                                     {this.hasImg() ? (<img src={`http://localhost:80/img/${this.props.img}`} className="img-fluid" alt=""/>) : ('')}
-                                    <p className="card-text">{this.props.text}</p>
+                                    <p className="card-text py-3 pl-4">{this.props.text}</p>
                                 </div>
                                 <div className="card-footer">
                                     <a href="#" className="text-old-primary mr-2"><i className="far fa-heart h4"></i>
