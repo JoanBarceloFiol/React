@@ -28,6 +28,8 @@ class DropdownProfile extends React.Component {
 	}
 
 	render() {
+		let myUser = localStorage.getItem('myData').split(',')[1];
+
 		return (
 			<div>
 				<UncontrolledDropdown setActiveFromChild>
@@ -35,7 +37,7 @@ class DropdownProfile extends React.Component {
 						<i className='fas fa-user'></i>
 					</DropdownToggle>
 					<DropdownMenu right className="dropdown-menu-left">
-					<Link className="text-decoration-none" to="/courses"><DropdownItem tag="a" className="btn btn-link"><i className='fas fa-user' aria-hidden='true'></i> <Translate string={'myProfile'}/></DropdownItem></Link>
+					<Link className="text-decoration-none" to={`/user/${myUser}`}><DropdownItem tag="a" className="btn btn-link"><i className='fas fa-user' aria-hidden='true'></i> <Translate string={'myProfile'}/></DropdownItem></Link>
 					<Link className="text-decoration-none" to="/my-routes"><DropdownItem tag="a" className="btn btn-link"><i className='fas fa-route' aria-hidden='true'></i> <Translate string={'myRoute'}/></DropdownItem></Link>
 					<Link className="text-decoration-none" to="/my-courses"><DropdownItem tag="a" className="btn btn-link"><i className='fas fa-chalkboard-teacher' aria-hidden='true'></i> <Translate string={'myCourses'}/></DropdownItem></Link>
 						<DropdownItem tag="a" onClick={this.closeSession} className="btn btn-link"><i className='fas fa-sign-out-alt' aria-hidden='true'></i> <Translate string={'logout'}/></DropdownItem>
