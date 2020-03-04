@@ -103,9 +103,9 @@ class Routes extends Component {
 
         return (
             <li>
-                <div className="checkbox ml-2">
-                    <label>
-                        <input type="checkbox" value={name + ',' + parent} onClick={this.setFiltre}/> {name}
+                <div className="checkbox ml-3 small">
+                    <label className="d-flex">
+                        <input type="checkbox" className="mt-1 mr-1" value={name + ',' + parent} onClick={this.setFiltre}/> <span>{name}</span>
                     </label>
                 </div>
             </li>
