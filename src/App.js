@@ -13,6 +13,7 @@ import RoutePage from "./components/Route/RoutePage";
 import User from "./components/User/User";
 import MyRoutes from "./components/MyRoutes/MyRoutes";
 import MyCourses from "./components/MyCourses/MyCourses";
+import CreateRoute from "./components/CreateRoute/CreateRoute";
 
 
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
                        <Route path="/user/:handle" component={User} />
                        <Route path="/my-routes" component={MyRoutes} />
                        <Route path="/my-courses" component={MyCourses} />
+                       <Route path="/create-route" component={CreateRoute} />
                   </Switch>
                </main>
              <Footer />

@@ -10,10 +10,17 @@ class SocialPublication extends Component {
 
         this.state = {
             publications: []
-        }
+        };
+
+        this.refresh = this.refresh.bind(this);
+        this.setPublications = this.setPublications.bind(this);
     }
 
     componentDidMount() {
+        this.setPublications();
+    }
+
+    setPublications(){
         let id = localStorage.getItem('myData').split(',')[0];
         let data = axios.get(`http://localhost:80/api/publication/followers/${id}`);
         data.then( res => {
@@ -27,10 +34,15 @@ class SocialPublication extends Component {
         return (<UserPublication userName={userName} text={text} img={img} comment={comment} likes={likes}/>)
     }
 
+    refresh(){
+        console.log('xd');
+        this.setPublications();
+    }
+
     render() {
         return (
             <div className="col-md-8 col-lg-6 gedf-main">
-            <Publicar/>
+            <Publicar callback={this.refresh.bind(this)}/>
 
                 <div id="publication" >
                     {this.state.publications.map(res => this.displayPublication(res.user, res.text, res.img, res.comment_num, res.likes_num))}

@@ -29,16 +29,17 @@ class SocialPerfil extends Component {
     }
 
     render() {
+        let username = localStorage.getItem('myData').split(',')[1];
         return (
             <div className="col-md-3 d-none d-lg-block">
                 <div className="card">
                     <div className="card-body">
-                        <a id="myUserLink">
+                        <a href={`/user/${username}`} id="myUserLink">
                             <img id="myUserImg" className="d-flex mb-2 mr-3 rounded-circle shadow-sm storyborder"
                                  src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                  width="75px"/>
                         </a>
-                        <a id="myUserName" className="h5 text-dark text-decoration-none">{this.state.userName}</a>
+                        <a href={`/user/${username}`} id="myUserName" className="h5 text-dark text-decoration-none">{this.state.userName}</a>
                         <div className="h7">
                             <p id="myUserDescription">{this.state.description}</p>
                         </div>
