@@ -76,13 +76,18 @@
 		"userShort": "El nom d'usuari \u00e9s massa curt",
 		"routes": "Rutes",
 		"map": "Mapa",
-		"distance": "Distancia",
-
+		"distance": "Distanci",
 		"courses": "Cursos",
 		"myProfile": "El meu perfil",
 		"myCourses": "Els meus cursos",
 		"surnames": "Llinatges",
-		"mail": "Email"
+		"mail": "Email",
+		"createRoute": "Crear ruta",
+		"modality": "Modalitat",
+		"description": "Descripció",
+		"create": "Crear",
+		"cancel": "Cancel·lar",
+		"next": "Següent"
 	},
 	"en": {
 		"user": "User",
@@ -166,7 +171,13 @@
 		"myProfile": "My profile",
 		"myCourses": "My courses",
 		"surnames": "Surnames",
-		"mail": "Email"
+		"mail": "Email",
+		"createRoute": "Create route",
+		"modality": "Modality",
+		"description": "Description",
+		"create": "Create",
+		"cancel": "Cancel",
+		"next": "Next"
 	},
 	"es": {
 		"user": "Usuario",
@@ -250,7 +261,13 @@
 		"myProfile": "Mi perfil",
 		"myCourses": "Mis cursos",
 		"surnames": "Apellidos",
-		"mail": "Email"
+		"mail": "Email",
+		"createRoute": "Crear ruta",
+		"modality": "Modalidad",
+		"description": "Descripción",
+		"create": "Crear",
+		"cancel": "Cancelar",
+		"next": "Siguiente"
 	},
 	"fr": {
 		"user": "Utilisateur",
@@ -334,6 +351,12 @@
 		"myProfile": "Mon profil",
 		"myCourses": "My courses",
 		"surnames": "Surnoms",
-		"mail": "Email"
+		"mail": "Email",
+		"createRoute": "Créer un itinéraire",
+		"modality": "Modalité",
+		"description": "Description",
+		"create": "Créer",
+		"cancel": "Annuler",
+		"next": "Suivant"
 	}
 }
