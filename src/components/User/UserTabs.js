@@ -93,8 +93,16 @@ class UserTabs extends Component{
                  <hr/>
                  <TabContent activeTab={this.props.tab}>
                      <TabPane tabId="1">
-                         {this.props.publications.map(res => this.mountPublications
-                         (res.id, res.img, res.text, res.user, res.route, res.commentNum, res.likesNum))}
+                         <div className="row">
+                             <div className="col-1 d-none d-md-block">
+                             </div>
+                             <div className="col-12 col-md-10">
+                                 {this.props.publications.map(res => this.mountPublications
+                                 (res.id, res.img, res.text, res.user, res.route, res.commentNum, res.likesNum))}
+                             </div>
+                             <div className="col-1 d-none d-md-block">
+                             </div>
+                         </div>
                      </TabPane>
                      <TabPane tabId="2">
                          {this.props.comments.map(res => this.mountComments
