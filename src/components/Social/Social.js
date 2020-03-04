@@ -3,9 +3,16 @@ import Translate from "../../lang/Translate";
 import SocialPerfil from "./SocialPerfil";
 import SocialPublication from "./SocialPublication";
 import SocialSuggestions from "./SocialSuggestions";
+import { Redirect } from "react-router-dom";
 
 class Social extends Component {
     render() {
+
+        console.log(localStorage.getItem('myData').split(','));
+        if(localStorage.getItem('myData').split(',').length <= 1) {
+            return <Redirect to='/login'/>;
+        }
+
         return (
             <main role="main" class="container-fluid">
                 <div class="mt-4 px-1 px-md-3 d-block d-md-none storyrow overflow-auto">

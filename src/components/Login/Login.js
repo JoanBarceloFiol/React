@@ -12,7 +12,8 @@ class Login extends Component {
         this.state = {
             userName: null,
             pass: null,
-            redirect: false
+            redirect: false,
+            error: ''
         };
 
         this.userNameChange = this.userNameChange.bind(this);
@@ -36,20 +37,25 @@ class Login extends Component {
             axios.post(`http://localhost:80/api/login`, querystring.stringify({ password, userName }))
                 .then(res => {
                     localStorage.setItem('myData', res.data);
-                    if(res.data !== 'error')
-                        this.props.callback();
+                    if(localStorage.getItem('myData').split(',').length > 1) {
+                        this.setState({redirect: true});
+                    }else{
+                        this.setState({error: 'credencials incorrectes'})
+                    }
                 })
         }
 
-        if(localStorage.getItem('myData')[0] !== 'error')
-            this.setState({redirect:true});
     }
 
     render() {
 
+        console.log(this.state.redirect);
+
         if (this.state.redirect) {
+            this.props.callback();
             return <Redirect to='/'/>;
         }
+
 
         return (
             <main className="container-fluid">
@@ -66,7 +72,7 @@ class Login extends Component {
                                 <div className="form-group">
                                     <label><i className="fas fa-key text-secondary"/> <Translate string={'password'}/>:</label>
                                     <input className="form-control" type="password" id="pass" value={this.state.pass} onChange={this.passChange}/>
-                                    <small id="incorrectPass" className="form-text text-danger"/>
+                                    <small className="form-text text-danger">{this.state.error}</small>
                                 </div>
                                 <button className="btn btn-primary btn-block rounded mt-4" type="button" onClick={this.submitLogin}><Translate string={'submit'}/>&nbsp;&nbsp;<i className="fas fa-angle-right"/></button>
                             </form>
