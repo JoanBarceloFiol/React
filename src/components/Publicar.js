@@ -15,22 +15,24 @@ import {
 	} from 'reactstrap';
 import classnames from 'classnames';
 import Translate from "../lang/Translate";
-import md5 from "md5";
 import axios from "axios";
 
 class Publicar extends Component{
-	
+	img = null;
+
     constructor(props) {
         super(props);
         this.state = {
         	activeTab: '1',
             text: null,
             img: null,
+            display: null
         };
 
         this.changeText = this.changeText.bind(this);
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.sentPublication = this.sentPublication.bind(this);
+        this.displayImg = this.displayImg.bind(this);
     }
 
     changeTab(tab){
@@ -47,6 +49,7 @@ class Publicar extends Component{
 
     onChangeHandler(event){
         this.setState({img: event.target.files[0]});
+        this.displayImg(event);
     }
 
     sentPublication(){
@@ -71,8 +74,25 @@ class Publicar extends Component{
             );
     }
 
+    displayImg(e){
+        e.preventDefault();
+
+        let reader = new FileReader();
+        let file = e.target.files[0];
+
+        reader.onloadend = () => {
+            this.setState({
+                display: reader.result
+            });
+        }
+
+        reader.readAsDataURL(file)
+    }
+
 
   render() {
+
+        console.log(this.state.display);
 
       return (
         <Card ClassName="gedf-card">
@@ -110,6 +130,7 @@ class Publicar extends Component{
                 <input onChange={this.onChangeHandler} type="file" className="form-control-file" id="customFile"/>
                 <label className="custom-file-label" for="customFile"><Translate string={'uploadImage'}/></label>
                 </div>
+                    {(this.state.display !== null) ? (<img src={this.state.display} className="img-thumbnail"/>) : null }
                 </div>
                 <div className="py-4"></div>
             </TabPane>

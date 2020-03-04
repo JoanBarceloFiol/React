@@ -3,6 +3,7 @@ import Translate from "../../lang/Translate";
 import '../../css/register.css';
 import md5 from "md5";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class Register extends Component {
 
@@ -21,7 +22,8 @@ class Register extends Component {
             pass1: '',
             pass1Error: '',
             pass2: '',
-            pass2Error: ''
+            pass2Error: '',
+            redirect: false
         };
 
         this.userNameChange = this.userNameChange.bind(this);
@@ -118,7 +120,9 @@ class Register extends Component {
 
             axios.post(`http://localhost:80/api/user`, querystring.stringify({uName, name, sur1, pass, email}))
                 .then(res => {
-                    console.log(res.data);
+                    if(res.data === '') {
+                        this.setState({redirect:true});
+                    }
                 })
         } else {
             console.log('error');
@@ -145,6 +149,13 @@ class Register extends Component {
     }
 
     render() {
+
+        console.log(this.state.redirect);
+
+        if(this.state.redirect){
+            return <Redirect to='/login' />;
+        }
+
         return (
             <main className="container-fluid">
                 <div className="row d-flex justify-content-center">
