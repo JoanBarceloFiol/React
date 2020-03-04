@@ -103,9 +103,9 @@ class Routes extends Component {
 
         return (
             <li>
-                <div className="checkbox">
-                    <label>
-                        <input type="checkbox" value={name + ',' + parent} onClick={this.setFiltre}/> {name}
+                <div className="checkbox ml-3 small">
+                    <label className="d-flex">
+                        <input type="checkbox" className="mt-1 mr-1" value={name + ',' + parent} onClick={this.setFiltre}/> <span>{name}</span>
                     </label>
                 </div>
             </li>
@@ -199,32 +199,28 @@ class Routes extends Component {
                             </div>
                         </div>
                         <div className="row justify-content-between border-bottom" >
-                            <div className="col-12 col-xl-4 ml-3 ml-md-5 mt-2 mb-1 ">
+                            <div className="col ml-3 ml-md-5 mt-2 mb-1 ">
                                 <div className="btn-group">
-                                    <DropdownButton className="mr-2" id="dropdown-basic-button" title="zone">
+                                    <DropdownButton size="sm" className="mr-2 pt-1" variant="link text-decoration-none" title="Zona">
                                         {this.state.zones.map(res => this.displayFiltre(res.name, 'zone'))}
                                     </DropdownButton>
-                                    <DropdownButton className="mx-2" id="dropdown-basic-button " title="difucltat">
+                                    <DropdownButton size="sm" className="mx-2 pt-1" variant="link text-decoration-none" title="Difucltat">
                                         {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
                                     </DropdownButton>
-                                    <DropdownButton className="ml-2" id="dropdown-basic-button " title="Modalitat">
+                                    <DropdownButton size="sm" className="ml-2 pt-1" variant="link text-decoration-none" title="Modalitat">
                                         {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
                                     </DropdownButton>
                                 </div>
                             </div>
-                            <div className="col-12 col-xl-4 mr-4 mt-2 mb-1 ">
-                                <form>
-                                    <div className="row">
-                                        <div className="col-2 pt-1 pl-2 mt-1">
-                                            KM:
-                                        </div>
-                                        <div className="col-5 px-1">
-                                            <input type="text" className="form-control" placeholder="Min" value={this.state.minKm} onChange={this.minChange} />
-                                        </div>
-                                        <div className="col-5 px-1">
-                                            <input type="text" className="form-control" placeholder="Max" value={this.state.maxKm} onChange={this.maxChange}/>
-                                        </div>
-                                    </div>
+                            <div className="col ml-4 ml-md-5 mr-4 mt-2 mb-1 mr-5">
+                                <form className="d-flex">
+                                            <p className="mt-2 ml-1 mr-2">KM:</p>
+	                                        <div className="input-group input-group-sm mb-2 pt-1 mx-1">
+	                                        	<input type="text" className="form-control" aria-label="Small" placeholder="Min" value={this.state.minKm} onChange={this.minChange} aria-describedby="inputGroup-sizing-sm"/>
+	                                        </div>
+                                          <div className="input-group input-group-sm mb-2 pt-1 ml-1">
+	                                        <input type="text" className="form-control" aria-label="Small" placeholder="Max" value={this.state.maxKm} onChange={this.maxChange} aria-describedby="inputGroup-sizing-sm"/>
+	                                      </div>
                                 </form>
                             </div>
                         </div>
