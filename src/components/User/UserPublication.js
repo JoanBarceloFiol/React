@@ -52,7 +52,7 @@ class UserPublication extends Component {
                                 </div>
 
                                 <div className="card-body p-0">
-                                    {this.hasImg() ? (<img src={`http://localhost:80/img/${this.props.img}`} className="img-fluid" alt=""/>) : ('')}
+                                    {this.hasImg() ? (<img src={`http://localhost:80${this.props.img}`} className="img-fluid" alt=""/>) : ('')}
                                     <p className="card-text py-3 pl-4">{this.props.text}</p>
                                 </div>
                                 <div className="card-footer">
