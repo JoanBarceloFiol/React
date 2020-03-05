@@ -20,17 +20,22 @@ class User extends Component {
 
     componentDidMount(){
         const {handle} = this.props.match.params;
-        axios.get(`http://localhost:80/api/user/${handle}`)
+        axios.get(`http://www.goatrails.dawman.info/api/user/${handle}`)
             .then(response =>{
+                console.log(response.data);
                 this.setState({user: response.data});
-                return axios.get(`http://localhost:80/api/user/${this.state.user.id}/publications`);
+                console.log(`http://www.goatrails.dawman.info/api/user/${this.state.user.id}/publications`);
+                return axios.get(`http://www.goatrails.dawman.info/api/user/${this.state.user.id}/publications`);
             })
             .then(response =>{
                 this.setState({publications: response.data});
-                return axios.get(`http://localhost:80/api/user/${this.state.user.id}/comment`);
+                console.log(`http://www.goatrails.dawman.info/api/user/${this.state.user.id}/comment`);
+                return axios.get(`http://www.goatrails.dawman.info/api/user/${this.state.user.id}/comment`);
             })
             .then(response =>{
                 this.setState({comments: response.data});
+
+
         })
     }
 

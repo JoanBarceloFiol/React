@@ -8,8 +8,7 @@ import { Redirect } from "react-router-dom";
 class Social extends Component {
     render() {
 
-        console.log(localStorage.getItem('myData').split(','));
-        if(localStorage.getItem('myData').split(',').length <= 1) {
+        if(localStorage.getItem('myData') !== null && localStorage.getItem('myData').split(',').length <= 1) {
             return <Redirect to='/login'/>;
         }
 

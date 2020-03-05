@@ -20,9 +20,12 @@ class App extends Component {
   
   constructor(props) {
      super(props);
-     const data = localStorage.getItem('myData').split(',');
+     const data = (localStorage.getItem('myData') !== null) ? localStorage.getItem('myData').split(',') : 'error';
       console.log(data);
 
+      if(localStorage.getItem('myData') === null){
+          localStorage.setItem('myData', 'error');
+      }
       // Idioma per defecte
      this.state = {
          preferredLocale: "es",

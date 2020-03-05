@@ -202,13 +202,13 @@ class Routes extends Component {
                             <div className="col ml-3 ml-md-5 mt-2 mb-1 ">
                                 <div className="btn-group">
                                     <DropdownButton size="sm" className="mr-2 pt-1" variant="link text-decoration-none" title="Zona">
-                                        {this.state.zones.map(res => this.displayFiltre(res.name, 'zone'))}
+                                        { (Array.isArray(this.state.zones.map)) ? this.state.zones.map(res => this.displayFiltre(res.name, 'zone')) : null}
                                     </DropdownButton>
                                     <DropdownButton size="sm" className="mx-2 pt-1" variant="link text-decoration-none" title="Difucltat">
-                                        {this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl'))}
+                                        { (Array.isArray(this.state.lvl.map)) ? this.state.lvl.map(res => this.displayFiltre(res.nom, 'lvl')) : null}
                                     </DropdownButton>
                                     <DropdownButton size="sm" className="ml-2 pt-1" variant="link text-decoration-none" title="Modalitat">
-                                        {this.state.mod.map(res => this.displayFiltre(res.nom, 'modality'))}
+                                        { (Array.isArray(this.state.mod.map)) ? this.state.mod.map(res => this.displayFiltre(res.nom, 'modality')) : null}
                                     </DropdownButton>
                                 </div>
                             </div>
