@@ -80,7 +80,7 @@ class Login extends Component {
                     </div>
                 </div>
                 <div className="row d-flex justify-content-center mt-2">
-                    <a href="/register"><Translate string={'noRegister'}/></a>
+                    <a href="/register"><Translate string={'forgetPass'}/></a>
                 </div>
             </main>
         );
