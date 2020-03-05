@@ -61,6 +61,10 @@
     color: #495057;
 }
 
+.profile-max-size {
+    max-width: 100px;
+}
+
 
 html {
   position: relative;

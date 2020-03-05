@@ -16,7 +16,7 @@ class RouteElement extends Component {
                     <div className="d-none d-md-block col-sm-4 col-md-3 col-lg-2 text-center">
                         <a href={ownerLink}
                            title={this.props.owner}>
-                            <img className="rounded-circle shadow-sm nostoryborder w-100"
+                            <img className="rounded-circle shadow-sm nostoryborder w-100 profile-max-size"
                                  src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" />
                         </a>
                         <p className="text-secondary mt-1">
