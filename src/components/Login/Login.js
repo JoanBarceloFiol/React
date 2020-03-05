@@ -34,7 +34,7 @@ class Login extends Component {
             const querystring = require('querystring');
             const userName = this.state.userName;
             const password = md5(this.state.pass);
-            axios.post(`http://localhost:80/api/login`, querystring.stringify({ password, userName }))
+            axios.post(`http://www.goatrails.dawman.info/api/login`, querystring.stringify({ password, userName }))
                 .then(res => {
                     localStorage.setItem('myData', res.data);
                     if(localStorage.getItem('myData').split(',').length > 1) {

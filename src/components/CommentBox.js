@@ -35,7 +35,7 @@ class Comment extends Component {
             const querystring = require('querystring');
             const userId = localStorage.getItem('myData')[0];
             const text = this.state.comment;
-            axios.post(`http://localhost:80/api/route/${this.props.id}/comment`, querystring.stringify({ userId, text }))
+            axios.post(`http://www.goatrails.dawman.info/api/route/${this.props.id}/comment`, querystring.stringify({ userId, text }))
                 .then(res => {
                     console.log(res.data);
                     this.props.callback();

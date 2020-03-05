@@ -40,19 +40,19 @@ class CreateRouteTabs extends Component{
     }
 
     componentDidMount() {
-        let data = axios.get('http://localhost:80/api/level');
+        let data = axios.get('http://www.goatrails.dawman.info/api/level');
         data.then( res => {
             const lvl = res.data;
             this.setState({lvl});
         });
 
-        data = axios.get('http://localhost/api/modality');
+        data = axios.get('http://www.goatrails.dawman.info/api/modality');
         data.then( res => {
             const mod = res.data;
             this.setState({mod});
         });
 
-        data = axios.get('http://localhost/api/region');
+        data = axios.get('http://www.goatrails.dawman.info/api/region');
         data.then( res => {
             const zones = res.data;
             this.setState({zones});
@@ -153,11 +153,11 @@ class CreateRouteTabs extends Component{
             const zone = this.state.selectedZones;
             const id_propietari = localStorage.getItem('myData').split(',')[0];
 
-            axios.post(`http://localhost:80/api/routes/basic`, querystring.stringify({titol, distancia, id_dificultat, duracio, maxim_persones, descripcio, id_propietari, zone}))
+            axios.post(`http://www.goatrails.dawman.info/api/routes/basic`, querystring.stringify({titol, distancia, id_dificultat, duracio, maxim_persones, descripcio, id_propietari, zone}))
                 .then(res => {
                     for (let i = 0; i < this.state.selectedMod.length ; i++) {
                         let mod = this.state.selectedMod[i];
-                        axios.post(`http://localhost:80/api/routes/basic/${res.data}/mod`, querystring.stringify({mod})).then( res => {console.log(res.data)});
+                        axios.post(`http://www.goatrails.dawman.info/api/routes/basic/${res.data}/mod`, querystring.stringify({mod})).then( res => {console.log(res.data)});
                     }
 
                     this.setState({redirect:true})

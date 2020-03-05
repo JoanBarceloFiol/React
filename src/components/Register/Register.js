@@ -113,7 +113,7 @@ class Register extends Component {
 
     checkboxChange(){
         this.setState({checked: !this.state.checked});
-        let err = (!this.state.checked) ? '' : 'Aceptar Politicas';
+        let err = (!this.state.checked) ? '' : 'aceptar Politiques';
         this.setState({chekedError: err});
     }
 
@@ -127,7 +127,7 @@ class Register extends Component {
             const pass = md5(this.state.pass1);
             const email = this.state.email;
 
-            axios.post(`http://localhost:80/api/user`, querystring.stringify({uName, name, sur1, pass, email}))
+            axios.post(`http://www.goatrails.dawman.info/api/user`, querystring.stringify({uName, name, sur1, pass, email}))
                 .then(res => {
                     if(res.data === '') {
                         this.setState({redirect:true});
@@ -150,7 +150,7 @@ class Register extends Component {
         comp[5] = this.passCheck(this.state.pass1);
         comp[6] = !this.state.checked;
 
-        let err = (this.state.checked) ? '' : 'Aceptar Politicas';
+        let err = (this.state.checked) ? '' : 'aceptar Politiques';
         this.setState({chekedError: err});
 
         for (let i = 0; i < comp.length ; i++) {

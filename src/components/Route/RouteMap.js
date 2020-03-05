@@ -19,7 +19,7 @@ class RouteMap extends Component {
     }
 
     componentDidMount(){
-        let data = axios.get(`http://localhost:80/api/route/${this.props.id}/path`);
+        let data = axios.get(`http://www.goatrails.dawman.info/api/route/${this.props.id}/path`);
         data.then( res => {
             const route = res.data;
             this.setState({route, state: true});

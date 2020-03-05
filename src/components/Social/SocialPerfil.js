@@ -16,7 +16,7 @@ class SocialPerfil extends Component {
 
     componentDidMount() {
         let id = localStorage.getItem('myData').split(',')[1];
-        let data = axios.get(`http://localhost:80/api/user/${id}`);
+        let data = axios.get(`http://www.goatrails.dawman.info/api/user/${id}`);
         data.then( res => {
             console.log(res.data)
             this.setState({

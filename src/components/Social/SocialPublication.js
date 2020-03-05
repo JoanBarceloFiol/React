@@ -22,7 +22,7 @@ class SocialPublication extends Component {
 
     setPublications(){
         let id = localStorage.getItem('myData').split(',')[0];
-        let data = axios.get(`http://localhost:80/api/publication/followers/${id}`);
+        let data = axios.get(`http://www.goatrails.dawman.info/api/publication/followers/${id}`);
         data.then( res => {
             console.log(res.data);
             this.setState({publications: res.data})

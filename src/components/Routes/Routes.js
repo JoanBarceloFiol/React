@@ -36,19 +36,19 @@ class Routes extends Component {
     componentDidMount() {
         this.setRoutes();
 
-        let data = axios.get('http://localhost:80/api/level');
+        let data = axios.get('http://www.goatrails.dawman.info/pi/level');
         data.then( res => {
             const lvl = res.data;
             this.setState({lvl});
         });
 
-        data = axios.get('http://localhost/api/modality');
+        data = axios.get('http://www.goatrails.dawman.info/api/modality');
         data.then( res => {
             const mod = res.data;
             this.setState({mod});
         });
 
-        data = axios.get('http://localhost/api/region');
+        data = axios.get('http://www.goatrails.dawman.info/api/region');
         data.then( res => {
             const zones = res.data;
             this.setState({zones});
@@ -56,7 +56,7 @@ class Routes extends Component {
     }
 
     setRoutes(){
-        let data = axios.get('http://localhost:80/api/routes/basic');
+        let data = axios.get('http://www.goatrails.dawman.info/api/routes/basic');
         data.then( res => {
             const routes = res.data;
             this.setState({routes});
@@ -67,7 +67,7 @@ class Routes extends Component {
         const text = event.target.value;
 
         if(text !== '') {
-            let data = axios.get(`http://localhost:80/api/routes/basic/text?text=${text}`);
+            let data = axios.get(`http://www.goatrails.dawman.info/api/routes/basic/text?text=${text}`);
             data.then(res => {
                 const routes = res.data;
                 this.setState({routes});

@@ -20,7 +20,7 @@ class MyRoutes extends Component {
 
     componentDidMount() {
         let id = localStorage.getItem('myData').split(',')[0];
-        let data = axios.get(`http://localhost:80/api/routes/basic/user/${id}`);
+        let data = axios.get(`http://www.goatrails.dawman.info/api/routes/basic/user/${id}`);
         data.then( res => {
             const routes = res.data;
             this.setState({routes});

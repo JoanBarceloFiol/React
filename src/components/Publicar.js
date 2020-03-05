@@ -57,15 +57,15 @@ class Publicar extends Component{
         const text = this.state.text;
         const user = localStorage.getItem('myData').split(',')[0];
 
-        axios.post(`http://localhost:80/api/publicatio`,  querystring.stringify({text, user}))
+        axios.post(`http://www.goatrails.dawman.info/api/publicatio`,  querystring.stringify({text, user}))
             .then(
                 (response) => {
                     const img = new FormData();
                     img.append('img', this.state.img);
 
-                    console.log(`http://localhost:80/api/publicatio/${response.data[0]}/img`);
+                    console.log(`http://www.goatrails.dawman.info/api/publicatio/${response.data[0]}/img`);
 
-                    axios.post(`http://localhost:80/api/publicatio/${response.data[0]}/img`, img)
+                    axios.post(`http://www.goatrails.dawman.info/api/publicatio/${response.data[0]}/img`, img)
                         .then(
                             this.props.callback
                         );

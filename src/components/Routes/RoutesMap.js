@@ -19,7 +19,7 @@ class RoutesMap extends Component {
     }
 
     componentDidMount(){
-        let data = axios.get('http://localhost:80/api/first-points');
+        let data = axios.get('http://www.goatrails.dawman.info/api/first-points');
         data.then( res => {
             const points = res.data;
             this.setState({points, state: true});

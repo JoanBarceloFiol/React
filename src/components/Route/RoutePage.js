@@ -23,9 +23,9 @@ class RoutePage extends Component {
 
     componentDidMount () {
         const {handle} = this.props.match.params;
-        let route = axios.get(`http://localhost:80/api/routes/basic/${handle}`);
-        let comments = axios.get(`http://localhost:80/api/route/${handle}/comment`);
-        let avg = axios.get(`http://localhost:80/api/routes/basic/${handle}/avg`);
+        let route = axios.get(`http://www.goatrails.dawman.info/api/routes/basic/${handle}`);
+        let comments = axios.get(`http://www.goatrails.dawman.info/api/route/${handle}/comment`);
+        let avg = axios.get(`http://www.goatrails.dawman.info/api/routes/basic/${handle}/avg`);
 
         route.then( res => {
             const route = res.data;
@@ -57,7 +57,7 @@ class RoutePage extends Component {
     reloadPage() {
         console.log('hola');
         const {handle} = this.props.match.params;
-        let comments = axios.get(`http://localhost:80/api/route/${handle}/comment`);
+        let comments = axios.get(`http://www.goatrails.dawman.info/api/route/${handle}/comment`);
 
         comments.then( res => {
             const comments = res.data;
