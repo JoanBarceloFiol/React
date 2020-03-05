@@ -87,7 +87,11 @@
 		"description": "Descripció",
 		"create": "Crear",
 		"cancel": "Cancel·lar",
-		"next": "Següent"
+		"next": "Següent",
+		"signedUp": "Inscrit",
+		"favorites": "Favorits",
+		"created": "Creades",
+		"forgetPass": "Has oblidat la teva contrasenya?"
 	},
 	"en": {
 		"user": "User",
@@ -177,7 +181,11 @@
 		"description": "Description",
 		"create": "Create",
 		"cancel": "Cancel",
-		"next": "Next"
+		"next": "Next",
+		"signedUp": "Signed Up",
+		"favorites": "Favorites",
+		"created": "Created",
+		"forgetPass": "Don't remember your password?"
 	},
 	"es": {
 		"user": "Usuario",
@@ -267,7 +275,11 @@
 		"description": "Descripción",
 		"create": "Crear",
 		"cancel": "Cancelar",
-		"next": "Siguiente"
+		"next": "Siguiente",
+		"signedUp": "Inscrito",
+		"favorites": "Favoritos",
+		"created": "Creadas",
+		"forgetPass": "¿Has olvidado tu contraseña?"
 	},
 	"fr": {
 		"user": "Utilisateur",
@@ -357,6 +369,10 @@
 		"description": "Description",
 		"create": "Créer",
 		"cancel": "Annuler",
-		"next": "Suivant"
+		"next": "Suivant",
+		"signedUp": "Enregistré",
+		"favorites": "Favoris",
+		"created": "Créé",
+		"forgetPass": "¿Vous avez oublié votre mot de passe?"
 	}
 }

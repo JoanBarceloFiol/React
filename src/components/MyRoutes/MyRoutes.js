@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import classnames from 'classnames';
 import RouteElement from "../Routes/RouteElement";
 import Translate from "../../lang/Translate";
+import {Nav, NavItem, NavLink, TabContent, TabPane} from "reactstrap";
 
 class MyRoutes extends Component {
 
@@ -10,7 +12,7 @@ class MyRoutes extends Component {
 
         this.state = {
             routes: [],
-
+            activeTab: '2'
         };
 
         this.mountRoutes = this.mountRoutes.bind(this);
@@ -27,27 +29,51 @@ class MyRoutes extends Component {
 
     mountRoutes(id, tit, dist, diff, maxPer, dur, desc, owner, mod, zone) {
         return (<RouteElement id={id} tit={tit} dist={dist} diff={diff} maxPer={maxPer} desc={desc} owner={owner} dur={dur} mod={mod} zone={zone}/>);
+    }
 
+    toggle(tab) {
+        if (this.state.activeTab !== tab) {
+            this.setState({
+                activeTab: tab
+            });
+        }
     }
 
     render() {
         return (
-        		<main role="main" className="container-fluid">
-            	<div className="row mx-2 mx-sm-5 pt-4 mt-4">
-            		<div className="col">
-	            		<div className="btn-group w-100 border-top border-bottom py-2" role="group" aria-label="Basic example">
-		            		<button type="button" className="border-left-0 bg-white btn btn-light border-top-0 border-bottom-0" style={{border: "1px solid #ced4da",color: "#495057a3"}}>
-		            			<i className="fas fa-pencil-alt"/> Inscrito
-		            		</button>
-		            		<button type="button" className="bg-white btn btn-light border-top-0 border-bottom-0" style={{border:"1px solid #ced4da",color: "#495057a3"}}>
-		            			<i className="fas fa-edit"/> Creadas
-		            		</button>
-		            		<button style={{border:"1px solid #ced4da",color: "#31669a"}} type="button" className="btn btn-light text-secondary border-bottom-0 border-top-0 border-right-0">
-		            			<i className="fas fa-heart"/> Favoritos
-		            		</button>
-		            	</div>
-            		</div>
-            	</div>
+            <main role="main" className="container-fluid">
+                <div className="row mx-2 mx-sm-5 pt-4 mt-4">
+                    <div className="col">
+                        <hr/>
+                        <Nav id="perfilTabs" className="row" tag="div">
+                            <NavItem className="col border-0 p-0 mr-1 mr-sm-3 nav-item nav-link cursor-pointer text-center">
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '1' })}
+                                    onClick={() => {this.toggle('1')}}
+                                >
+                                    <i className="fas fa-th d-inline d-md-none h4"></i><span className="d-none d-md-inline"><i className="fas fa-pencil-alt"></i> <Translate string={'signedUp'}/></span>
+                                </NavLink>
+                            </NavItem>
+                            <NavItem className="col border-0 p-0 mx-1 mx-sm-3 nav-item nav-link cursor-pointer text-center">
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '2' })}
+                                    onClick={() => {this.toggle('2')}}
+                                >
+                                    <i className="fas fa-comments d-inline d-md-none h4"></i><span className="d-none d-md-inline"><i className="fas fa-edit"></i> <Translate string={'created'}/></span>
+                                </NavLink>
+                            </NavItem>
+                            <NavItem className="col border-0 p-0 ml-1 ml-sm-3 nav-item nav-link cursor-pointer text-center">
+                                <NavLink
+                                    className={classnames({ active: this.state.activeTab === '3' })}
+                                    onClick={() => {this.toggle('3')}}
+                                >
+                                    <i className="fas fa-award d-inline d-md-none h4"></i><span className="d-none d-md-inline"><i className="fas fa-heart"></i> <Translate string={'favorites'}/></span>
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
+                        <hr/>
+                    </div>
+                </div>
                 <div className="row mx-2 mx-sm-5 pt-4 mt-4">
                     <div className="col-3 col-xl-2 mt-4 class border-right d-none d-md-block">
                         <div className="mb-3">
@@ -130,13 +156,19 @@ class MyRoutes extends Component {
                                 </div>
                             </div>
                         </div>
-
-                        <div id="curs">
-                        {this.state.routes.map(res => this.mountRoutes
+                        <TabContent activeTab={this.state.activeTab}>
+                            <TabPane tabId="1">
+                                <h2><Translate string={'signedUp'}/></h2>
+                            </TabPane>
+                            <TabPane tabId="2">
+                                {this.state.routes.map(res => this.mountRoutes
                                 (res.id, res.titol, res.distancia, res.id_dificultat, res.duracio, res.maxim_persones,
                                     res.descripcio, res.owner, res.modalitat, res.zone))}
-                        </div>
-
+                            </TabPane>
+                            <TabPane tabId="3">
+                                <h2><Translate string={'favorites'}/></h2>
+                            </TabPane>
+                        </TabContent>
                     </div>
                 </div>
             </main>

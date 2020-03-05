@@ -11,9 +11,9 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import RoutePage from "./components/Route/RoutePage";
 import User from "./components/User/User";
-import MyRoutes from "./components/MyRoutes/MyRoutes";
 import MyCourses from "./components/MyCourses/MyCourses";
 import CreateRoute from "./components/CreateRoute/CreateRoute";
+import MyRoutes from "./components/MyRoutes/MyRoutes";
 
 
 class App extends Component {
