@@ -23,7 +23,9 @@ class Register extends Component {
             pass1Error: '',
             pass2: '',
             pass2Error: '',
-            redirect: false
+            redirect: false,
+            checked: false,
+            chekedError: '',
         };
 
         this.userNameChange = this.userNameChange.bind(this);
@@ -35,6 +37,7 @@ class Register extends Component {
         this.submitRegister = this.submitRegister.bind(this);
         this.validateEmail = this.validateEmail.bind(this);
         this.userNameCheck = this.userNameCheck.bind(this);
+        this.checkboxChange = this.checkboxChange.bind(this);
     }
 
     userNameChange(event){
@@ -108,6 +111,10 @@ class Register extends Component {
         return re.test(String(email).toLowerCase());
     }
 
+    checkboxChange(){
+        this.setState({checked: !this.state.checked});
+    }
+
     submitRegister() {
 
         if (this.valideForm()) {
@@ -149,8 +156,6 @@ class Register extends Component {
     }
 
     render() {
-
-        console.log(this.state.redirect);
 
         if(this.state.redirect){
             return <Redirect to='/login' />;
@@ -196,6 +201,11 @@ class Register extends Component {
                                         <input className="form-control" type="password" id="pass2" value={this.state.pass2} onChange={this.secondPassChange}/>
                                         <small className="form-text text-danger">{this.state.pass2Error}</small>
                                     </div>
+                                </div>
+                                <div className="form-check">
+                                    <input onClick={this.checkboxChange} type="checkbox" className="form-check-input" id="privacityPolicy"/>
+                                    <label className="form-check-label small text-muted" htmlFor="privacityPolicy"><Translate string={'privacityPolicy'}/></label>
+                                    <small className="form-text text-danger">{this.state.chekedError}</small>
                                 </div>
                                 <button className="btn btn-primary btn-block rounded mt-4" type="button" onClick={this.submitRegister}><Translate string={'submit'}/> &nbsp;&nbsp;<i className="fas fa-angle-right"></i></button>
                             </form>

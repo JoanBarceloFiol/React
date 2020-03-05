@@ -91,7 +91,8 @@
 		"signedUp": "Inscrit",
 		"favorites": "Favorits",
 		"created": "Creades",
-		"forgetPass": "Has oblidat la teva contrasenya?"
+		"forgetPass": "Has oblidat la teva contrasenya?",
+		"privacityPolicy": "He lletgit i accept la política de privacitat i termes d'ús"
 	},
 	"en": {
 		"user": "User",
@@ -185,7 +186,8 @@
 		"signedUp": "Signed Up",
 		"favorites": "Favorites",
 		"created": "Created",
-		"forgetPass": "Don't remember your password?"
+		"forgetPass": "Don't remember your password?",
+		"privacityPolicy": "I readed and accept the privacy policy and terms of use"
 	},
 	"es": {
 		"user": "Usuario",
@@ -279,7 +281,8 @@
 		"signedUp": "Inscrito",
 		"favorites": "Favoritos",
 		"created": "Creadas",
-		"forgetPass": "¿Has olvidado tu contraseña?"
+		"forgetPass": "¿Has olvidado tu contraseña?",
+		"privacityPolicy": "He leído y acepto la política de privacidad y términos de uso"
 	},
 	"fr": {
 		"user": "Utilisateur",
@@ -373,6 +376,7 @@
 		"signedUp": "Enregistré",
 		"favorites": "Favoris",
 		"created": "Créé",
-		"forgetPass": "¿Vous avez oublié votre mot de passe?"
+		"forgetPass": "¿Vous avez oublié votre mot de passe?",
+		"privacityPolicy": "J'ai lu et j'accepte la politique de confidentialité et les conditions d'utilisation"
 	}
 }

@@ -74,7 +74,7 @@ class MyRoutes extends Component {
                         <hr/>
                     </div>
                 </div>
-                <div className="row mx-2 mx-sm-5 pt-4 mt-4">
+                <div className="row mx-2 mx-sm-5">
                     <div className="col-3 col-xl-2 mt-4 class border-right d-none d-md-block">
                         <div className="mb-3">
                             <p className="font-weight-bold border-bottom">Zona</p>
