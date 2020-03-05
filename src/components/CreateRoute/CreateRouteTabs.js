@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import Translate from "../../lang/Translate";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
-import md5 from "md5";
+import { Redirect } from "react-router-dom";
 
 class CreateRouteTabs extends Component{
     constructor(props) {
@@ -26,7 +26,8 @@ class CreateRouteTabs extends Component{
             lvl: [],
             mod: [],
             zones: [],
-            selectedZones: ''
+            selectedZones: '',
+            redirect: false
         };
 
         this.nameChange = this.nameChange.bind(this);
@@ -158,9 +159,9 @@ class CreateRouteTabs extends Component{
                         let mod = this.state.selectedMod[i];
                         axios.post(`http://localhost:80/api/routes/basic/${res.data}/mod`, querystring.stringify({mod})).then( res => {console.log(res.data)});
                     }
-                })
-        } else {
-            console.log('error');
+
+                    this.setState({redirect:true})
+                });
         }
     }
 
@@ -169,6 +170,11 @@ class CreateRouteTabs extends Component{
         console.log(this.state.selectedMod);
         console.log(this.state.selectedLvl);
         console.log(this.state.selectedZones);
+        console.log(this.state.redirect);
+
+        if(this.state.redirect){
+            return <Redirect to='/routes' />;
+        }
 
         return (
             <div>
