@@ -113,6 +113,8 @@ class Register extends Component {
 
     checkboxChange(){
         this.setState({checked: !this.state.checked});
+        let err = (!this.state.checked) ? '' : 'Aceptar Politicas';
+        this.setState({chekedError: err});
     }
 
     submitRegister() {
@@ -146,6 +148,10 @@ class Register extends Component {
         comp[3] = this.emailCheck(this.state.email);
         comp[4] = this.secondPassCheck(this.state.pass2);
         comp[5] = this.passCheck(this.state.pass1);
+        comp[6] = !this.state.checked;
+
+        let err = (this.state.checked) ? '' : 'Aceptar Politicas';
+        this.setState({chekedError: err});
 
         for (let i = 0; i < comp.length ; i++) {
             if(comp[i])
