@@ -23,7 +23,7 @@ const DropdownLogin = (props) => {
                             </Button>
                         </Link>
                         <Link className="text-decoration-none" to='/register'>
-                            <Button outline size="sm" color="light" href='/register' className='ml-2 rounded'>
+                            <Button outline size="sm" color="light"  className='ml-2 rounded'>
                                 <Translate string={'register'}/>
                             </Button>
                         </Link>
@@ -36,8 +36,8 @@ const DropdownLogin = (props) => {
 				            <i className='fas fa-user'/>
 				            </DropdownToggle>
 				            <DropdownMenu right className="dropdown-menu-left">
-				              <DropdownItem tag="a" href="/login" className="btn btn-link"><i className='fas fa-sign-in-alt' aria-hidden='true'/> <Translate string={'login'}/></DropdownItem>
-				              <DropdownItem tag="a" href="/register" className="btn btn-link"><i className='far fa-id-card' aria-hidden='true'/> <Translate string={'register'}/></DropdownItem>
+                                <Link className="text-decoration-none" to="/login"><DropdownItem tag="a"  className="btn btn-link"><i className='fas fa-sign-in-alt' aria-hidden='true'/> <Translate string={'login'}/></DropdownItem></Link>
+                                <Link className="text-decoration-none" to="/my-register"><DropdownItem tag="a" className="btn btn-link"><i className='far fa-id-card' aria-hidden='true'/> <Translate string={'register'}/></DropdownItem></Link>
 				            </DropdownMenu>
 			            </UncontrolledDropdown>
 				    		    

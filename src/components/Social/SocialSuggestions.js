@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
+import {Link} from "react-router-dom";
 
 class SocialSuggestions extends Component {
     render() {
@@ -10,27 +11,27 @@ class SocialSuggestions extends Component {
                     <div className="card-body">
                         <h5 className="card-title"><Translate string={'stories'}/></h5>
                         <div className="row px-3">
-                            <a href="#">
+                            <Link to="#">
                                 <img title="" className="d-flex mr-3 rounded-circle shadow-sm mt-1 storyborder"
                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                      height="40px" width="40px"/>
-                            </a>
+                            </Link>
                             <div className="ml-2">
-                                <a href="#" title=""
+                                <Link to="#" title=""
                                    className="m-0 font-weight-bold text-decoration-none text-dark"><Translate
-                                    string={'user'}/></a><br/>
+                                    string={'user'}/></Link><br/>
                                 <small className="text-muted"> <i className="fa fa-clock-o"></i> 40 min</small>
                             </div>
                         </div>
                         <div className="row px-3 mt-3">
-                            <a href="#">
+                            <Link to="#">
                                 <img title="Toni" className="d-flex mr-3 rounded-circle shadow-sm mt-1 storyborder-seen"
                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                      height="40px" width="40px"/>
-                            </a>
+                            </Link>
                             <div className="ml-2">
-                                <a href="#" title="Toni"
-                                   className="m-0 font-weight-bold text-decoration-none text-dark">Toni </a><br/>
+                                <Link to="#" title="Toni"
+                                   className="m-0 font-weight-bold text-decoration-none text-dark">Toni </Link><br/>
                                 <small className="text-muted"> <i className="fa fa-clock-o"></i> 1 h</small>
                             </div>
                         </div>
@@ -41,21 +42,21 @@ class SocialSuggestions extends Component {
                     <div className="card-body">
                         <h5 className="card-title"><Translate string={'suggestions'}/></h5>
                         <div className="row px-3 mt-3 mb-3">
-                            <a href="#">
+                            <Link to="#">
                                 <img title="Reina isabel"
                                      className="d-flex mr-3 rounded-circle shadow-sm mt-2 nostoryborder"
                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                      height="40px" width="40px"/>
-                            </a>
+                            </Link>
                             <div className="ml-2">
-                                <a href="#" title="Reina isabel"
+                                <Link to="#" title="Reina isabel"
                                    className="mt-n2 text-decoration-none font-weight-bold text-dark">Reina
-                                    isabel </a><br/>
+                                    isabel </Link><br/>
                                 <button className="btn btn-light btn-sm"><small><Translate string={'follow'}/></small>
                                 </button>
                             </div>
                         </div>
-                        <a href="#" className="card-link text-old-primary"><Translate string={'seeMore'}/></a>
+                        <Link to="#" className="card-link text-old-primary"><Translate string={'seeMore'}/></Link>
                     </div>
                 </div>
             </div>

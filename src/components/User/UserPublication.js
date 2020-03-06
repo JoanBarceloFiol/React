@@ -3,6 +3,7 @@ import Translate from "../../lang/Translate";
 import DropdownLogin from "../DropdownLogin";
 import DropdownProfile from "../DropdownProfile";
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
+import {Link} from "react-router-dom";
 
 class UserPublication extends Component {
     constructor(props) {
@@ -22,15 +23,15 @@ class UserPublication extends Component {
                         <div className="card-header">
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="d-flex justify-content-between align-items-center">
-                                    <a href={`/user/${this.props.userName}`}>
+                                    <Link to={`/user/${this.props.userName}`}>
                                         <img title={this.props.userName}
                                              className="d-flex mr-3 rounded-circle shadow-sm storyborder"
                                              src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                              width="50px"/>
-                                    </a>
+                                    </Link>
                                     <div className="ml-2">
-                                        <a href={`/user/${this.props.userName}`} title={this.props.userName}
-                                           className="d-block h5 m-0 text-decoration-none text-dark">{this.props.userName} </a>
+                                        <Link to={`/user/${this.props.userName}`} title={this.props.userName}
+                                           className="d-block h5 m-0 text-decoration-none text-dark">{this.props.userName} </Link>
                                         <small className="text-muted h7 mb-2"> <i
                                             className="fa fa-clock-o"></i> 10 min</small>
                                     </div>
@@ -40,7 +41,7 @@ class UserPublication extends Component {
                                         <i className='fa fa-ellipsis-h'></i>
                                     </DropdownToggle>
                                     <DropdownMenu right className="dropdown-menu-left">
-                                        <DropdownItem tag="a" href="#" className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
+                                        <DropdownItem className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </div>
@@ -52,11 +53,11 @@ class UserPublication extends Component {
                             <p className="card-text py-3 pl-4">{this.props.text}</p>
                         </div>
                         <div className="card-footer">
-                            <a href="#" className="text-old-primary mr-2"><i className="far fa-heart h4"></i>
-                                <small className="h6">{this.props.likes}</small></a>
-                            <a href="#" className="text-secondary mx-2"><i className="fas fa-comments h4"></i>
-                                <small className="h6">{this.props.comment}</small></a>
-                            <a href="#" className="text-secondary mx-2"><i className="fas fa-share h4"></i></a>
+                            <Link to="#" className="text-old-primary mr-2"><i className="far fa-heart h4"></i>
+                                <small className="h6">{this.props.likes}</small></Link>
+                            <Link to="#" className="text-secondary mx-2"><i className="fas fa-comments h4"></i>
+                                <small className="h6">{this.props.comment}</small></Link>
+                            <Link to="#" className="text-secondary mx-2"><i className="fas fa-share h4"></i></Link>
                         </div>
                     </div>
                 </div>

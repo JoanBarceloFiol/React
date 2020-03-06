@@ -5,6 +5,7 @@ import {
 	Col
 	} from 'reactstrap';
 import Translate from "../lang/Translate";
+import {Link} from "react-router-dom";
 
 class Footer extends React.Component {
 
@@ -17,15 +18,15 @@ class Footer extends React.Component {
 		                    <p className="text-light h5"><Translate string={'registerFree'}/></p>
 		                </li>
 		                <li className="list-inline-item">
-		                    <a href="/register" className="btn btn-outline-light rounded">
+		                    <Link to="/register" className="btn btn-outline-light rounded">
 		                    <Translate string={'signUp'}/>
-		                    </a>
+		                    </Link>
 		            	</li>
 		          	</Col>
 		        </Row>
 		        <Row className="text-center bg-dark p-2">
 		            <Col className="col text-center bg-dark p-2">
-		            	<a href="#" className="text-secondary">&copy; {(new Date().getFullYear())} Copyright - GOATrails.com</a>
+		            	<Link to="#" className="text-secondary">&copy; {(new Date().getFullYear())} Copyright - GOATrails.com</Link>
 		            </Col>
 		    	</Row>
 	        </Container>

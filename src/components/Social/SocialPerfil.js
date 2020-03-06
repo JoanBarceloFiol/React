@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Translate from "../../lang/Translate";
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class SocialPerfil extends Component {
     constructor(props) {
@@ -34,12 +35,12 @@ class SocialPerfil extends Component {
             <div className="col-md-3 d-none d-lg-block">
                 <div className="card">
                     <div className="card-body">
-                        <a href={`/user/${username}`} id="myUserLink">
+                        <Link to={`/user/${username}`} id="myUserLink">
                             <img id="myUserImg" className="d-flex mb-2 mr-3 rounded-circle shadow-sm storyborder"
                                  src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                  width="75px"/>
-                        </a>
-                        <a href={`/user/${username}`} id="myUserName" className="h5 text-dark text-decoration-none">{this.state.userName}</a>
+                        </Link>
+                        <Link to={`/user/${username}`} id="myUserName" className="h5 text-dark text-decoration-none">{this.state.userName}</Link>
                         <div className="h7">
                             <p id="myUserDescription">{this.state.description}</p>
                         </div>

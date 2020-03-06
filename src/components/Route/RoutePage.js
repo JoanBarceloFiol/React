@@ -4,6 +4,7 @@ import axios from "axios";
 import Comment from "../Comment";
 import Translate from "../../lang/Translate";
 import CommentBox from "../CommentBox";
+import {Link} from "react-router-dom";
 
 class RoutePage extends Component {
 
@@ -84,10 +85,10 @@ class RoutePage extends Component {
 
                         <hr/>
                         <div className="d-block-inline d-lg-none mb-4">
-                            <a href={ownLink}><img
+                            <Link to={ownLink}><img
                                 className="rounded-circle nostoryborder" title={route.owner}
                                 src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-                                width="25px" /></a> <a className="text-old-primary" title={route.owner} href={ownLink}>{route.owner} </a>
+                                width="25px" /></Link> <Link className="text-old-primary" title={route.owner} to={ownLink}>{route.owner} </Link>
                         </div>
 
                         <div style={{height: '400px'}}>
@@ -102,9 +103,9 @@ class RoutePage extends Component {
                         <hr/>
 
                         <div className="d-block d-lg-none">
-                            <a href={payLink}
+                            <Link to={payLink}
                                className="btn btn-primary btn-block rounded shadow-sm my-4">
-                                <i className="far fa-credit-card"/> &nbsp;<Translate string={'pay'}/></a>
+                                <i className="far fa-credit-card"/> &nbsp;<Translate string={'pay'}/></Link>
 
                             <div className="card mt-3">
                                 <h5 className="card-header"><Translate string={'information'}/></h5>
@@ -113,19 +114,19 @@ class RoutePage extends Component {
                                         <div className="col col-xl-6">
                                             <p><i className="fas fa-walking"/>
                                                 {route.distancia} km</p>
-                                            <p><i className="fas fa-map-marker-alt"/> <a
+                                            <p><i className="fas fa-map-marker-alt"/> <Link
                                                 className="text-old-primary"
-                                                href="#"> getZone()</a></p>
+                                                to="#"> getZone()</Link></p>
                                             <div className="d-block d-xl-none">
-                                                <p><i className="fas fa-medal"/> <a
+                                                <p><i className="fas fa-medal"/> <Link
                                                     className="text-old-primary"
-                                                    href="#">{route.id_dificultat}</a></p>
+                                                    to="#">{route.id_dificultat}</Link></p>
                                             </div>
                                         </div>
                                         <div className="d-none d-xl-block col-6">
-                                            <p><i className="fas fa-medal"/> <a
+                                            <p><i className="fas fa-medal"/> <Link
                                                 className="text-old-primary"
-                                                href="#">{route.id_dificultat}</a></p>
+                                                to="#">{route.id_dificultat}</Link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -163,22 +164,22 @@ class RoutePage extends Component {
 
                     <div className="col d-none d-lg-inline">
 
-                        <a href="pagament/id"
+                        <Link to="pagament/id"
                            className="btn btn-primary btn-block rounded shadow-sm mt-4 d-none d-lg-block">
-                            <i className="far fa-credit-card"/> &nbsp; <Translate string={'pay'}/> </a>
+                            <i className="far fa-credit-card"/> &nbsp; <Translate string={'pay'}/> </Link>
 
                         <div className="card rounded mt-5">
                             <div className="card-body">
                                 <div className="text-center">
-                                    <a href={ownLink}
+                                    <Link yo={ownLink}
                                        title="getUserNom()">
                                         <img className="rounded-circle shadow-sm nostoryborder"
                                              src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
                                              width="80px"/>
-                                    </a>
+                                    </Link>
                                     <p className="text-secondary mt-1">
-                                        <a className="text-old-primary" href={ownLink}
-                                           title={route.owner}>{route.owner}</a>
+                                        <Link className="text-old-primary" to={ownLink}
+                                           title={route.owner}>{route.owner}</Link>
                                     </p>
                                 </div>
                             </div>
@@ -191,15 +192,15 @@ class RoutePage extends Component {
                                 <div className="row px-3">
                                     <div className="col col-xl-6">
                                         <p><i className="fas fa-walking"/> {route.distancia} km</p>
-                                        <p><i className="fas fa-map-marker-alt"/> <a className="text-old-primary" href="#"> getZone</a>
+                                        <p><i className="fas fa-map-marker-alt"/> <Link className="text-old-primary" to="#"> getZone</Link>
                                         </p>
                                         <div className="d-block d-xl-none">
-                                            <p><i className="fas fa-medal"/> <a className="text-old-primary" href="#">{route.id_dificultat}</a>
+                                            <p><i className="fas fa-medal"/> <Link className="text-old-primary" to="#">{route.id_dificultat}</Link>
                                             </p>
                                         </div>
                                     </div>
                                     <div className="d-none d-xl-block col-6">
-                                        <p><i className="fas fa-medal"/> <a className="text-old-primary" href="#">{route.id_dificultat}</a>
+                                        <p><i className="fas fa-medal"/> <Link className="text-old-primary" to="#">{route.id_dificultat}</Link>
                                         </p>
                                     </div>
                                 </div>

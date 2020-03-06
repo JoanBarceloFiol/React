@@ -3,6 +3,7 @@ import Translate from "../../lang/Translate";
 import axios from "axios";
 import UserTabs from "./UserTabs";
 import {DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown} from "reactstrap";
+import {Link} from "react-router-dom";
 
 class User extends Component {
 
@@ -54,26 +55,26 @@ class User extends Component {
             <main role="main" class="container-fluid">
                 <div class="row mx-2 mx-md-5 pt-5">
                     <div class="col-3 col-md-4 ml-5 d-flex justify-content-end">
-                        <a href="#">
+                        <Link tp="#">
                             <img class="d-none d-md-block rounded-circle nostoryborder mr-5" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="150px" height="150px"/>
                             <img class="d-block d-md-none rounded-circle nostoryborder" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" width="100px" height="100px"/>
-                        </a>
+                        </Link>
                     </div>
                     <div class="col pl-4 pt-2">
                         <div class="row">
                             <div class="col">
-                                <a href="#" class="d-inline-block mb-3 h3 text-decoration-none text-dark">{user.userName}</a>
-                                <a href="#" class="ml-3 px-4 btn btn-sm btn-light border mt-n2 d-none d-md-inline-block"><Translate string={'follow'}/></a>
+                                <Link to="#" class="d-inline-block mb-3 h3 text-decoration-none text-dark">{user.userName}</Link>
+                                <Link to="#" class="ml-3 px-4 btn btn-sm btn-light border mt-n2 d-none d-md-inline-block"><Translate string={'follow'}/></Link>
                                 <UncontrolledDropdown setActiveFromChild className="d-inline-block cursor-pointer">
                                     <DropdownToggle tag="a" className="btn btn-link text-secondary dropdown-toggle text-decoration-none" caret>
                                         <i className='fa fa-ellipsis-h'></i>
                                     </DropdownToggle>
                                     <DropdownMenu right className="dropdown-menu-left">
-                                        <DropdownItem tag="a" href="#" className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
+                                        <DropdownItem className="btn btn-link"><i className='fas fa-exclamation-circle' aria-hidden='true'></i> <Translate string={'report'}/></DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                                 <br class="d-inline-block d-md-none"/>
-                                    <a href="#" class="px-4 btn btn-sm btn-light border mt-n2 d-inline-block d-md-none"><Translate string={'follow'}/></a>
+                                    <Link to="#" class="px-4 btn btn-sm btn-light border mt-n2 d-inline-block d-md-none"><Translate string={'follow'}/></Link>
                             </div>
                         </div>
                         <div class="row mt-2 d-none d-md-block">
